@@ -1,0 +1,31 @@
+*{
+  margin:0px ;
+  padding: 0px;
+}
+
+
+
+.active{
+    color: red !important;
+}
+
+.navbar-nav .nav-item .nav-link {
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .navbar-nav .nav-item .nav-link:hover {
+    color: #007bff !important; /* Change text color */
+    font-size: 1.1rem; /* Slightly bigger text */
+    font-weight: bold; /* Optional: Make text bold */
+  }
+
+  .navbar-nav{
+    margin:0px ;
+    padding: 0px;
+  }
+  .logo .logo>img{
+    /* width :"5px" !important; */
+    margin:0px ;
+    padding: 0px;
+    
+  }

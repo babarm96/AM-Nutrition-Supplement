@@ -1,0 +1,56 @@
+/* Footer Styles */
+.footer {
+    background-color: #111;
+    color: #fff;
+  }
+  
+  .brand-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00; /* Gym-themed yellow */
+  }
+  
+  .footer-text {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #bbb;
+  }
+  
+  .footer-link {
+    color: #ffcc00;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .footer-link:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  
+  /* Social Media Icons */
+  .social-icons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .social-icon {
+    color: #ffcc00;
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out, color 0.3s;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.2);
+    color: #fff;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer {
+      text-align: center;
+    }
+  
+    .social-icons {
+      justify-content: center;
+    }
+  }
