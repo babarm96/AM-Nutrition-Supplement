@@ -21,7 +21,7 @@ root.render(
   <React.StrictMode>
 
     {/* <Header /> */}
-    <App />
+    {/* <App /> */}
 {/* 
     <Header /> */}
     {/* <App /> */}
@@ -29,7 +29,7 @@ root.render(
     <Contact /> */}
 
 
-    {/* <Contact /> */}
+    <Contact />
     {/* <Practise/> */}
   </React.StrictMode>
 );

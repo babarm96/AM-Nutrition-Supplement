@@ -1,82 +1,96 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Form.css"; // Custom styles
 
-export default function Form() {
+const Form = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
-    message: ""
+    message: "",
   });
-  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
 
-  const validate = () => {
-    let newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!/^[0-9]{10}$/.test(formData.phone)) newErrors.phone = "Valid phone number is required";
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) newErrors.email = "Valid email is required";
-    if (!formData.message.trim()) newErrors.message = "Message cannot be empty";
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validate()) {
-      alert("Form submitted successfully!");
-    }
+    emailjs
+      .send("service_id", "template_id", formData, "user_id")
+      .then(() => setSuccess(true))
+      .catch((error) => console.error("EmailJS Error:", error));
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="m-auto w-50" >
-        <div className="row m-auto">
-          <div className="col-sm-6"  > 
-            <input
-              type="text"
-              placeholder="Name*"
-              className="p-2 border rounded-5 w-75"
-              style={{background:"#F4F4F4"}}
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            />
-            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="signup-container"
+    >
+      <div className="card shadow-lg p-4">
+        {/* <h2 className="text-center text-white">Inquiry</h2> */}
+        {success && (
+          <p className="text-success text-center">Inquiry sent successfully!</p>
+        )}
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <div className="col-md-6 mb-3">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name *"
+                className="form-control"
+                required
+                onChange={handleChange}
+              />
+            </div>
+            <div className="col-md-6 mb-3">
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number *"
+                className="form-control"
+                required
+                onChange={handleChange}
+              />
+            </div>
           </div>
-          <div className="col-sm-6">
+          <div className="mb-3">
             <input
-              placeholder="Phone No*"
-              type="text"
-              className="p-2 border rounded-5 w-75"
-              style={{background:"#F4F4F4"}}
-              value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              type="email"
+              name="email"
+              placeholder="Email *"
+              className="form-control"
+              required
+              onChange={handleChange}
             />
-            {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
           </div>
-        </div>
-        <div className="row w-75 mt-3">
-          <input
-            type="email"
-            placeholder="Email*"
-            className="w-75 p-2 border rounded-5 m-2"
-            style={{background:"#F4F4F4"}}
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-        </div>
-        <div className="row w-75 mt-3">
-          <textarea
-          placeholder="Say Something here.....!!"
-            className="w-full p-2 border rounded"
-            style={{background:"#F4F4F4"}}
-            rows="3"
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          ></textarea>
-          {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
-        </div>
-        <button type="submit" className="w-full bg--500 text-white p-2 rounded mt-4">Submit</button>
-      </form>
-    </div>
+          <div className="mb-3">
+            <textarea
+              name="message"
+              placeholder="Say something..."
+              className="form-control"
+              rows="4"
+              required
+              onChange={handleChange}
+            ></textarea>
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            type="submit"
+            className="btn btn-dark w-100"
+          >
+            Submit
+          </motion.button>
+        </form>
+      </div>
+    </motion.div>
   );
-}
+};
+
+export default Form;
