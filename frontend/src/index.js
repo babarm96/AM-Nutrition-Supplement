@@ -24,12 +24,12 @@ root.render(
     {/* <App /> */}
 {/* 
     <Header /> */}
-    {/* <App /> */}
+    <App />
 {/* 
     <Contact /> */}
 
 
-    <Contact />
+    {/* <Contact /> */}
     {/* <Practise/> */}
   </React.StrictMode>
 );

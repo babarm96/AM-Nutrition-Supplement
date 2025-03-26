@@ -143,8 +143,8 @@ isVisible && (
       </form>
 
       
-      <NavLink class="text-center me-5  text-dark" to="/login">
-    <i class="bi bi-person-circle text-dark fs-3"></i>
+      <NavLink className="text-center me-5  text-dark" to="/login">
+    <i className="bi bi-person-circle text-dark fs-3"></i>
 </NavLink>
 
     </div>

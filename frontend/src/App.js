@@ -8,6 +8,12 @@ import Contact from './Componants/Contact';
 import Cart from './Componants/Cart';
 import Login from './Componants/Login';
 import Carousel from './Componants/Carausal';
+import SectionCard from './Componants/SectionCard';
+import AllProducts from './Componants/AllProducts';
+import Protins from './Componants/Protins';
+import Multivitamins from './Componants/Multivitamins';
+import PrePostWorkout from './Componants/PrePostWorkout';
+import WeightGainer from './Componants/WeightGainer';
 
 const App = () => {
   return (
@@ -15,8 +21,13 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-    
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home/>}/>
+           <Route path="/all-products" element={<AllProducts/>} />
+           <Route path="/proteins" element={<Protins/>} />
+           <Route path="/pre-post-workout" element={<PrePostWorkout/>} />
+           <Route path="/weight-gainer" element={<WeightGainer/>} />
+           <Route path="/multivitamins" element={<Multivitamins/>} />
+      {/* </Route> */}
         <Route path="/about" element={<About/>} />
         <Route path="/products" elementt={<Products />} />
         <Route path="/contact" element={<Contact/>} />

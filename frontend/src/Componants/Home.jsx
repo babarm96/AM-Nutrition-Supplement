@@ -6,11 +6,18 @@ import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import './Carausal'
 import Carausal from './Carausal';
+import { Outlet } from "react-router-dom";
+import SectionCard from './SectionCard';
 
 const Home = () => {
   return (
 <>
   <Carausal/>
+  <SectionCard/>
+        {/* Dynamic section content (loaded via Outlet) */}
+        {/* <div className="content-container mt-4">
+        <Outlet />
+      </div> */}
 
     <Container className="mt-4">
       <header className="text-center mb-4">
@@ -57,7 +64,9 @@ const Home = () => {
           </Card>
         </Col>
       </Row>
+
     </Container>
+
     </>
   );
 };
