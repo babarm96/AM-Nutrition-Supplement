@@ -8,6 +8,9 @@ import Contact from './Componants/Contact';
 import Cart from './Componants/Cart';
 import Login from './Componants/Login';
 import Carousel from './Componants/Carausal';
+import ProductCard from './Componants/ProductCard';
+
+
 
 const App = () => {
   return (
@@ -22,6 +25,7 @@ const App = () => {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/cart" element={<Cart/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/productsCard" element={<ProductCard />} />
       </Routes>
     </Router>
   );
