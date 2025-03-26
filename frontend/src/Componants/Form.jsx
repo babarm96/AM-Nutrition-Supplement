@@ -20,11 +20,16 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     emailjs
-      .send("service_id", "template_id", formData, "user_id")
+      .send(
+        "service_nyq8gvs", // Service ID
+        "template_7bmdacp", // Template ID
+        formData,
+        "FlzQftFg9BMDPKjWc" // public key
+      )
       .then(() => setSuccess(true))
       .catch((error) => console.error("EmailJS Error:", error));
   };
-
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}

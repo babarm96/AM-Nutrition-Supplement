@@ -14,6 +14,8 @@ import Protins from './Componants/Protins';
 import Multivitamins from './Componants/Multivitamins';
 import PrePostWorkout from './Componants/PrePostWorkout';
 import WeightGainer from './Componants/WeightGainer';
+import ProductCard from './Componants/ProductCard';
+
 
 const App = () => {
   return (
@@ -33,6 +35,7 @@ const App = () => {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/cart" element={<Cart/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/productsCard" element={<ProductCard />} />
       </Routes>
     </Router>
   );
