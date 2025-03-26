@@ -23,6 +23,10 @@ root.render(
 {/* 
     <Header /> */}
     <App />
+{/* 
+    <Contact /> */}
+
+
     {/* <Contact /> */}
     {/* <Practise/> */}
   </React.StrictMode>
