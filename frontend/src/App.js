@@ -14,7 +14,9 @@ import Protins from './Componants/Protins';
 import Multivitamins from './Componants/Multivitamins';
 import PrePostWorkout from './Componants/PrePostWorkout';
 import WeightGainer from './Componants/WeightGainer';
-import ProductCard from './Componants/ProductCard';
+import BeginnerLevel from './Componants/BeginnerLevel'
+import IntermediateLevel from './Componants/IntermediateLevel';
+import AdvancedLevel from './Componants/AdvancedLevel';
 
 
 const App = () => {
@@ -35,7 +37,9 @@ const App = () => {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/cart" element={<Cart/>} />
         <Route path="/login" element={<Login/>} />
-        <Route path="/productsCard" element={<ProductCard />} />
+        <Route path="/BeginnerLevel" element={<BeginnerLevel />} />
+        <Route path="/IntermediateLevel" element={<IntermediateLevel /> } />
+        <Route path="/AdvancedLevel" element={<AdvancedLevel/> } />
       </Routes>
     </Router>
   );
