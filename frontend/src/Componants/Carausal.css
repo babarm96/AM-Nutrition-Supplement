@@ -1,138 +1,174 @@
+/* Main Carousel Styling */
 .custom-carousel .carousel-item {
-    height: 600px; /* Adjust as needed */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 1s ease-in-out;
-    position: relative;
+  height: 600px; /* Full height for the carousel */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Slide Animation */
+.custom-carousel .carousel-item.active-slide {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Main Content Wrapper */
+.carousel-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Centered Product Card (Increased Size) */
+.product-card {
+  width: 85%; /* Increased width to cover more area */
+  max-width: 1100px;
+  height: 70%; /* Increased height */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Left Side (Product Info) */
+.left-content {
+  flex: 1;
+  text-align: left;
+  color: #fff;
+  padding: 20px;
+}
+
+/* Product Title */
+.product-title {
+  font-size: 36px; /* Bigger font for title */
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Product Description */
+.product-description {
+  font-size: 20px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #f1f1f1;
+}
+
+/* Buy Now Button */
+.buy-now-btn {
+  background-color: #ff5733;
+  border: none;
+  padding: 14px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.buy-now-btn:hover {
+  background-color: #d43f00;
+  transform: scale(1.1);
+}
+
+/* Right Side (Product Image) */
+.right-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Product Image with Proper Size */
+.product-image {
+  width: 400px; /* Bigger image */
+  height: auto;
+  animation: zoomInOut 3s infinite alternate ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
   }
-  
-  /* Animations when slide changes */
-  .custom-carousel .carousel-item.active-slide {
-    animation: slideInRight 1s ease-in-out, fadeIn 1s ease-in-out;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Container for product details and image */
-  .carousel-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    max-width: 1200px;
-    color: white;
-    text-align: left;
-    /* background: rgba(0, 0, 0, 0.5); Transparent overlay */
-    padding: 20px;
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
+}
+
+/* Continuous zoom effect for product image */
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
   }
-  
-  /* Left side content */
-  .left-content {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .left-content h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    animation: slideInLeft 1s ease-in-out;
-  }
-  
-  .left-content p {
-    font-size: 18px;
-    animation: slideInLeft 1.2s ease-in-out;
-  }
-  
-  .buy-now-btn {
-    background-color: #ff5733;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .buy-now-btn:hover {
-    background-color: #d43f00;
+  100% {
     transform: scale(1.1);
   }
-  
-  /* Right side (Product image) */
-  .right-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    
-  }
-  .right-content>img{
-    background: transparent;
-    mix-blend-mode: multiply;
-  
-  }
-  img{
-    background: transparent;
-    background-color: transparent;
-    mix-blend-mode: multiply;
-  
+}
 
-    mix-blend-mode: multiply; /* Works best on light backgrounds */
-    display: block;
-    margin: auto;
+/* Responsive Design */
+@media (max-width: 992px) {
+  .product-card {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    padding: 30px;
+    text-align: center;
   }
-  
+
+  .left-content {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .product-title {
+    font-size: 28px;
+  }
+
+  .product-description {
+    font-size: 18px;
+  }
+
+  .buy-now-btn {
+    padding: 12px 25px;
+    font-size: 18px;
+  }
+
+  .product-image {
+    width: 300px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .product-title {
+    font-size: 24px;
+  }
+
+  .product-description {
+    font-size: 16px;
+  }
+
+  .buy-now-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
   .product-image {
     width: 250px;
-    height: auto;
   }
-  
-  /* Zoom in & out animation for the product image */
-  .animated-zoom {
-    animation: zoomInOut 3s infinite alternate ease-in-out;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideInLeft {
-    from {
-      transform: translateX(-50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideInRight {
-    from {
-      transform: translateX(50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  /* Continuous zoom effect for product image */
-  @keyframes zoomInOut {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(1.1);
-    }
-  }
-  
+}

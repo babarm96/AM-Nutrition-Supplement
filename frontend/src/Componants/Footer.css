@@ -1,56 +1,122 @@
-/* Footer Styles */
+/* Footer container */
 .footer {
-    background-color: #111;
-    color: #fff;
+  background: linear-gradient(to right, #232526, #414345);
+  color: #fff;
+  padding: 40px 0;
+  font-family: "Arial", sans-serif;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Top Section */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding-bottom: 30px;
+}
+
+/* Footer Section */
+.footer-section h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Section Border Effect */
+.footer-section h3::after {
+  content: "";
+  width: 50%;
+  height: 2px;
+  background: #ffb400;
+  display: block;
+  margin-top: 5px;
+  transition: width 0.4s;
+}
+
+/* Social Media */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-link {
+  color: #ffb400;
+  font-size: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Effect */
+.social-link:hover {
+  color: #fff;
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Contact Info & Links */
+.footer-section p,
+.footer-section ul {
+  margin-top: 10px;
+  line-height: 1.8;
+}
+
+/* Links Styling */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #ffb400;
+  transition: color 0.3s ease;
+}
+
+/* Hover Effect */
+.footer-section ul li a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Bottom Section */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #666;
+  padding-top: 15px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* Animation on Load */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
   }
-  
-  .brand-name {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffcc00; /* Gym-themed yellow */
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .footer-text {
-    font-size: 14px;
-    margin-top: 10px;
-    color: #bbb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
-  
-  .footer-link {
-    color: #ffcc00;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .footer-link:hover {
-    color: #fff;
-    text-decoration: underline;
-  }
-  
-  /* Social Media Icons */
+
   .social-icons {
-    display: flex;
-    gap: 15px;
+    justify-content: center;
   }
-  
-  .social-icon {
-    color: #ffcc00;
-    font-size: 20px;
-    transition: transform 0.3s ease-in-out, color 0.3s;
-  }
-  
-  .social-icon:hover {
-    transform: scale(1.2);
-    color: #fff;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .footer {
-      text-align: center;
-    }
-  
-    .social-icons {
-      justify-content: center;
-    }
-  }
+}
