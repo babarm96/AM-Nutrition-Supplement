@@ -1,0 +1,133 @@
+/* Form container styling */
+.form-container {
+  max-width: 800px; /* Wider form */
+  min-height: 500px; /* More width than height */
+  margin: 2em auto;
+  padding: 2em;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Universal input and select styling */
+.inputGroup {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 1em auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  color: rgb(80, 80, 80);
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(180, 180, 180);
+  background-color: transparent;
+  border-radius: 10px;
+  width: 100%;
+  appearance: none;
+  cursor: pointer;
+}
+
+.inputGroup textarea {
+  resize: none;
+  height: 120px;
+}
+
+/* Custom Checkbox from Uiverse.io by DaniloMGutavo */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(80, 80, 80);
+  user-select: none;
+  gap: 8px;
+}
+
+.custom-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox:checked ~ .checkmark {
+  background-color: #2196F3;
+  box-shadow: 0 3px 7px rgba(33, 150, 243, 0.3);
+}
+
+.custom-checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+
+@keyframes checkAnim {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 10px;
+  }
+}
+
+.custom-checkbox:checked ~ .checkmark:after {
+  animation: checkAnim 0.2s forwards;
+}
+
+
+/* Button styling */
+.btn-primary {
+  display: block;
+  margin: 1em auto; /* Centers the button */
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8em 2em;
+  border-radius: 25px;
+  border: 2px solid rgb(100, 100, 200);
+  background-color: transparent;
+  color: rgb(100, 100, 200);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: rgb(100, 100, 200);
+  color: white;
+}
