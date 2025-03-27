@@ -9,6 +9,7 @@ import Cart from './Componants/Cart';
 import Login from './Componants/Login';
 import Carousel from './Componants/Carausal';
 import SectionCard from './Componants/SectionCard';
+
 // import AllProducts from './Componants/AllProducts';
 // import Protins from './Componants/Protins';
 // import Multivitamins from './Componants/Multivitamins';
@@ -21,6 +22,15 @@ import Footer from './Componants/Footer';
 
 import BrandsSection from "./Componants/BrandsSection";
 import BrandProducts from "./Componants/BrandProducts";
+import AllProducts from './Componants/AllProducts';
+import Protins from './Componants/Protins';
+import Multivitamins from './Componants/Multivitamins';
+import PrePostWorkout from './Componants/PrePostWorkout';
+import WeightGainer from './Componants/WeightGainer';
+import BeginnerLevel from './Componants/BeginnerLevel'
+import IntermediateLevel from './Componants/IntermediateLevel';
+import AdvancedLevel from './Componants/AdvancedLevel';
+
 
 
 const App = () => {
@@ -46,7 +56,13 @@ const App = () => {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/cart" element={<Cart/>} />
         <Route path="/login" element={<Login/>} />
+
         <Route path="/productsCard" element={<ProductCard />} />
+
+        <Route path="/BeginnerLevel" element={<BeginnerLevel />} />
+        <Route path="/IntermediateLevel" element={<IntermediateLevel /> } />
+        <Route path="/AdvancedLevel" element={<AdvancedLevel/> } />
+
       </Routes>
       <Footer/>
     </Router>
