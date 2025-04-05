@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./AllLevelCss.css";
 
 const flavours = [
@@ -18,16 +19,13 @@ const BeginnerLevel = () => {
   const [selectedWeight, setSelectedWeight] = useState(weights[1]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/AllProducts") // Fetching JSON data
-      .then((response) => response.json())
-      .then((data) => {
-        // Filtering only beginner-level products
-        const beginnerProducts = data.filter((product) => product.level === "Beginner");
+    axios.get("http://localhost:3000/AllProducts")
+      .then((response) => {
+        const beginnerProducts = response.data.filter((product) => product.level === "Beginner");
         setProducts(beginnerProducts);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
-  
 
   return (
     <div className="product-container">

@@ -1,6 +1,7 @@
 import React, {useState}from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css'
+import Login from './Login';
 
 
 const Navbar = () => {
@@ -13,6 +14,12 @@ const Navbar = () => {
   location.pathname === "/something-else";
 
   
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
   return (
     <>
 {
@@ -144,14 +151,14 @@ isVisible && (
 
       
       <NavLink className="text-center me-5  text-dark" to="/login">
-    <i className="bi bi-person-circle text-dark fs-3"></i>
+    <i className="bi bi-person-circle text-dark fs-3" onClick={handleOpenModal}></i>
 </NavLink>
 
     </div>
   </div>
 </nav>
 
-
+<Login showModal={showModal} handleClose={handleCloseModal} />
 
 
     </>
