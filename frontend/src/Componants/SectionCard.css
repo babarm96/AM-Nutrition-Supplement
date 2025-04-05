@@ -1,6 +1,6 @@
 /* CardsSection.css */
 .cards-container {
-  width: 100%;
+  width: 90%;
   margin: 50px auto;
   display: flex;
   justify-content: space-between;
