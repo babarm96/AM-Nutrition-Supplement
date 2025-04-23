@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
+
 import Header from './Componants/Header';
 import Contact from './Componants/Contact.jsx';
 
@@ -14,6 +15,11 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js'
 import "bootstrap-icons/font/bootstrap-icons.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap styles are also included
 import Footer from './Componants/Footer.jsx';
+export * from '../src/Componants/data/brands.js';
+export * from '../src/Componants/data/categories.js';
+export * from '../src/Componants/data/certifications.js';
+export * from '../src/Componants/data/testimonials.js';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

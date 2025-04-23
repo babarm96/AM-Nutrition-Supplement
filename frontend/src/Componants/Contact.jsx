@@ -12,7 +12,7 @@ const Contact = () => {
         className="items-center justify-center px-4 m-auto"
         style={{
           height: "300px",
-          background: "#F4F4F4",
+          background: "black",
           borderRadius: "30px",
           textAlign: "center",
           width: "80%",
@@ -36,7 +36,7 @@ const Contact = () => {
               fontSize: "20px",
               fontFamily: "Arial, sans-serif",
               textDecoration: "none",
-              color: "#333",
+              color: "white",
               fontWeight: "bold",
             }}
           >
@@ -48,7 +48,7 @@ const Contact = () => {
               fontSize: "20px",
               fontFamily: "Arial, sans-serif",
               textDecoration: "none",
-              color: "#333",
+              color: "white",
               fontWeight: "bold",
               marginLeft: "10px",
             }}
