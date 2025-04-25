@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-import Header from './Componants/Header';
-import Contact from './Componants/Contact.jsx';
+// import Header from './Componants/Header';
+// import Contact from './Componants/Contact.jsx';
 
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'

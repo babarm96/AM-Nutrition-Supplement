@@ -1,5 +1,5 @@
-/* Centering the form */
-.signup-container {
+/* Main container */
+.protein-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,10 +7,10 @@
     padding: 20px;
     position: relative;
     overflow: hidden;
-}
-
-/* Background image with blur */
-.signup-container::before {
+  }
+  
+  /* Background image with blur */
+  .protein-form-container::before {
     content: "";
     position: absolute;
     top: 0;
@@ -18,13 +18,13 @@
     width: 100%;
     height: 100%;
     background: url('https://st2.depositphotos.com/1001951/7674/i/450/depositphotos_76744017-stock-photo-bodybuilding-nutrition-supplements-and-chemistry.jpg') 
-        no-repeat center center/cover;
+      no-repeat center center/cover;
     filter: blur(8px);
     z-index: -1;
-}
-
-/* Card (form box) */
-.card {
+  }
+  
+  /* Form card */
+  .protein-form-card {
     width: 100%;
     max-width: 800px;
     border-radius: 12px;
@@ -32,37 +32,46 @@
     backdrop-filter: blur(10px);
     padding: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Heading */
-h2 {
-    font-weight: bold;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Input fields */
-.form-control {
+  }
+  
+  /* Success message */
+  .protein-form-success-msg {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  /* Input fields */
+  .protein-form-input {
     width: 100%;
     padding: 12px;
-    border-radius: 30px; /* Rounded fields */
+    border-radius: 30px;
     border: none;
     outline: none;
     background: #f5f5f5;
     color: #333;
     font-size: 16px;
     font-family: "Arial", sans-serif;
-}
-
-/* Placeholder text */
-.form-control::placeholder {
+  }
+  
+  /* Textarea */
+  .protein-form-textarea {
+    border-radius: 20px;
+    background: #f5f5f5;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    resize: none;
+  }
+  
+  /* Placeholder text */
+  .protein-form-input::placeholder,
+  .protein-form-textarea::placeholder {
     color: #777;
     font-size: 14px;
-}
-
-/* Submit button */
-.btn {
+  }
+  
+  /* Submit button */
+  .protein-form-button {
     border-radius: 50px;
     font-weight: bold;
     background: #000;
@@ -72,16 +81,17 @@ h2 {
     border: none;
     cursor: pointer;
     transition: 0.3s ease-in-out;
-}
-
-.btn:hover {
+  }
+  
+  .protein-form-button:hover {
     transform: scale(1.05);
     background: #222;
-}
-
-/* Responsive styles */
-@media (max-width: 480px) {
-    .card {
-        padding: 20px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .protein-form-card {
+      padding: 20px;
     }
-}
+  }
+  

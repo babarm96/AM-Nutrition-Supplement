@@ -1,10 +1,10 @@
+
 import React from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import Carausal from "./Carausal";
 import { useNavigate } from "react-router-dom";
-import SectionCard from "./SectionCard";
+import Carausal from "../Componants/Carausal";
+import SectionCard from "../Componants/SectionCard";
+import BrandsSection from "../Componants/BrandsSection";
 import "./Home.css";
-import BrandsSection from "./BrandsSection";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -47,8 +47,6 @@ const Home = () => {
       <Carausal />
       <SectionCard />
 
- 
-
       {/* Shop by Level Section */}
       <div className="level-container">
         <h1 className="p-5 text-center">Shop by Level</h1>
@@ -62,6 +60,24 @@ const Home = () => {
               <div className="flip-card-inner">
                 <div className="flip-card-front">{item.level}</div>
                 <div className="flip-card-back">{item.text}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Featured Products Section (Optional if you had cards before) */}
+      <div className="container my-5">
+        <h2 className="text-center mb-4">Featured Products</h2>
+        <div className="row">
+          {featuredProducts.map((product, index) => (
+            <div className="col-md-4 mb-4" key={index}>
+              <div className="card h-100">
+                <div className="card-body">
+                  <h5 className="card-title">{product.title}</h5>
+                  <p className="card-text">{product.text}</p>
+                  <button className="btn btn-primary">Shop Now</button>
+                </div>
               </div>
             </div>
           ))}

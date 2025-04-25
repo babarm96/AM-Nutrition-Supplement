@@ -1,0 +1,108 @@
+/* Reset global styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom styles for navbar */
+.custom-top-strip {
+  background-color: #75f542;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.custom-top-strip-text {
+  margin-right: 200px;
+  font-size: 15px;
+}
+
+.custom-marquee {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.custom-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.custom-navbar {
+  background-color: #f8f9fa;
+}
+
+.custom-navbar-brand img {
+  width: 70px;
+  height: auto;
+}
+
+.custom-cart-link {
+  position: relative;
+  color: #343a40;
+}
+
+.custom-cart-badge {
+  top: 0;
+  start: 100%;
+  transform: translate(50%, -50%);
+}
+
+.custom-main-nav {
+  background-color: #f8f9fa;
+}
+
+.custom-find-store {
+  font-size: 15px;
+}
+
+.custom-find-store-text {
+  font-size: 15px;
+  color: #343a40;
+}
+
+.custom-toggler {
+  border: none;
+}
+
+.custom-nav-list {
+  margin: 0;
+  padding: 0;
+}
+
+.custom-nav-link {
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-nav-link:hover {
+  color: #007bff !important;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.custom-dropdown-link {
+  font-weight: bold;
+}
+
+.custom-dropdown-menu {
+  font-size: 14px;
+}
+
+.custom-dropdown-item {
+  font-size: 14px;
+}
+
+.custom-search-input {
+  width: 250px;
+}
+
+.custom-search-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.custom-login-icon {
+  cursor: pointer;
+}

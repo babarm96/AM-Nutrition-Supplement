@@ -1,5 +1,5 @@
-/* CardsSection.css */
-.cards-container {
+/* ---------- Section Cards Container ---------- */
+.section-card-container {
   width: 90%;
   margin: 50px auto;
   display: flex;
@@ -10,7 +10,8 @@
   overflow-x: auto; /* Optional - scroll on smaller screens */
 }
 
-.card-custom {
+/* ---------- Custom Card Style ---------- */
+.section-card-custom {
   width: 18%; /* Ensures all 5 cards fit in a row */
   height: 250px !important;
   position: relative;
@@ -18,15 +19,15 @@
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
- 
 }
 
-.card-custom:hover {
+.section-card-custom:hover {
   transform: scale(1.05);
   /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); */
 }
 
-.card-custom .overlay {
+/* ---------- Overlay for Card Text ---------- */
+.section-card-custom .section-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -38,11 +39,12 @@
   transition: background 0.3s ease-in-out;
 }
 
-.card-custom:hover .overlay {
+.section-card-custom:hover .section-overlay {
   background: rgba(0, 0, 0, 0.8);
 }
 
-.card-custom .card-text {
+/* ---------- Card Text Styling ---------- */
+.section-card-custom .section-card-text {
   color: #fff;
   font-size: 20px;
   font-weight: bold;
@@ -51,11 +53,11 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.card-custom:hover .card-text {
+.section-card-custom:hover .section-card-text {
   transform: scale(1.1);
 }
 
-/* Initial Render Animation */
+/* ---------- Initial Render Animation ---------- */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -67,31 +69,31 @@
   }
 }
 
-/* Responsive Design */
+/* ---------- Responsive Design ---------- */
 @media (max-width: 1200px) {
-  .cards-container {
+  .section-card-container {
     gap: 10px;
   }
 
-  .card-custom {
+  .section-card-custom {
     width: 18%;
   }
 }
 
 @media (max-width: 992px) {
-  .cards-container {
+  .section-card-container {
     flex-wrap: wrap; /* Wrap on smaller screens */
     justify-content: center;
   }
 
-  .card-custom {
+  .section-card-custom {
     width: 45%;
     margin-bottom: 20px;
   }
 }
 
 @media (max-width: 576px) {
-  .card-custom {
+  .section-card-custom {
     width: 100%;
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStore, FaMapMarkerAlt, FaClock, FaEnvelope } from "react-icons/fa";
-import Form from "./Form";
+import Form from "../Componants/Form";
 
 
 const Contact = () => {

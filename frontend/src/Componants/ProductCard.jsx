@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProductCard.css";
+import "../Style/ProductCard.css";
 
 const products = [
   {
@@ -36,22 +36,22 @@ const products = [
 
 const ProductCard = () => {
   return (
-    <div className="product-container">
+    <div className="unique-product-container">
       {products.map((product) => (
-        <div className="product-card" key={product.id}>
-          <img src={product.image} alt={product.title} className="product-image" />
-          <div className="product-info">
-            <h3 className="product-title">{product.title}</h3>
-            <p className="product-weight">{product.weight}</p>
-            <div className="product-pricing">
-              <span className="price">{product.price}</span>
-              <span className="old-price">{product.oldPrice}</span>
-              <span className="discount">{product.discount}</span>
+        <div className="unique-product-card" key={product.id}>
+          <img src={product.image} alt={product.title} className="unique-product-image" />
+          <div className="unique-product-info">
+            <h3 className="unique-product-title">{product.title}</h3>
+            <p className="unique-product-weight">{product.weight}</p>
+            <div className="unique-product-pricing">
+              <span className="unique-price">{product.price}</span>
+              <span className="unique-old-price">{product.oldPrice}</span>
+              <span className="unique-discount">{product.discount}</span>
             </div>
-            <div className="product-rating">{product.rating} ⭐</div>
-            <div className="product-buttons">
-              <button className="buy-now">BUY NOW</button>
-              <button className="add-to-cart">ADD TO CART</button>
+            <div className="unique-product-rating">{product.rating} ⭐</div>
+            <div className="unique-product-buttons">
+              <button className="unique-buy-now">BUY NOW</button>
+              <button className="unique-add-to-cart">ADD TO CART</button>
             </div>
           </div>
         </div>
