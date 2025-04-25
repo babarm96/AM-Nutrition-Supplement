@@ -1,170 +1,136 @@
 import React from 'react';
-import './About.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import SectionCard from '../Componants/SectionCard';
 
+
+import './About.css';
+import ReviewSwiper from '../Componants/ReviewSwiper';
 
 const About = () => {
+  const certifications = [
+    { name: "ISO Certified", image: "/assets2/certificate1.jpg" },
+    { name: "FDA Approved", image: "/assets2/certificate2.jpg" },
+    { name: "GMP Certified", image: "/assets2/certificate3.jpg" }
+  ];
+
   return (
-    <div className="about-page">
+    <div className="container my-5">
+      <style>{`
+        .card-img-top {
+          border-bottom: 2px solid #eee;
+        }
+        .card-title {
+          font-weight: 600;
+        }
+        .bg-light {
+          background-color: #f8f9fa !important;
+        }
+        .founder-img {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      `}</style>
 
-      <section className="about-store py-5 bg-light">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-6 mb-4 mb-lg-0">
-              <h2 className="fw-bold mb-4">About Our Store</h2>
-              <p className="lead mb-4">
-                Founded in 2010, our supplement store has been serving fitness enthusiasts with premium quality products for over a decade. 
-                Our mission is to provide authentic, scientifically-backed supplements that help our customers achieve their fitness goals.
-              </p>
-              <p>
-                We stand out by offering expert advice, personalized recommendations, and only stocking products that meet our strict quality standards. 
-                Our knowledgeable staff are all fitness enthusiasts themselves, ready to guide you to the right products for your needs.
-              </p>
+      {/* About Title Section */}
+      <div className="text-center mb-5">
+        <h2 
+          className="fw-bold" 
+          style={{ 
+            fontSize: '2.5rem', 
+            textShadow: '2px 2px 6px rgba(0, 0, 0, 0.3)', 
+            color: 'black' 
+          }}
+        >
+          About Our Store
+        </h2>
+        <p className="lead">Providing premium quality supplements since 2010</p>
+        <p>We offer a wide range of products backed by science, quality certifications, and expert recommendations.</p>
+      </div>
+
+      {/* Office Info Section */}
+      <div className="row mb-5 justify-content-center">
+        <div className="col-md-12">
+          <div className="card shadow p-4 bg-light mx-auto text-center" style={{ maxWidth: '900px' }}>
+            <h4 className="fw-bold mb-3 text-center">Our Office</h4>
+            <p><i className="bi bi-geo-alt-fill text-primary me-2"></i>123 Fitness Street, Gym District, City - 560001</p>
+            <p><i className="bi bi-clock-fill text-primary me-2"></i>Mon-Sat: 7:00 AM - 9:00 PM | Sun: 9:00 AM - 6:00 PM</p>
+            <p><i className="bi bi-telephone-fill text-primary me-2"></i>+91 9876543210</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Certifications Section */}
+      <div className="text-center mb-5">
+        <h3 className="fw-bold mb-4">Certifications</h3>
+        <div className="row justify-content-center">
+          {certifications.map((cert, idx) => (
+            <div key={idx} className="col-4 col-md-2 mb-3">
+              <div className="bg-white p-3 rounded shadow text-center">
+                <img src={cert.image} alt={cert.name} className="img-fluid mb-2" style={{ height: '80px' }} />
+                <p className="mb-0">{cert.name}</p>
+              </div>
             </div>
-            <div className="col-lg-6">
-              <div className="store-image position-relative rounded overflow-hidden">
-                <img 
-                  src="https://via.placeholder.com/600x400?text=Our+Store" 
-                  alt="Our Store" 
-                  className="img-fluid rounded shadow"
+          ))}
+        </div>
+      </div>
+
+      {/* Founders Section */}
+      <div className="founder-list">
+        <h3 className="fw-bold mb-4 text-center">Meet Our Founders</h3>
+
+        <div className="row mb-5 justify-content-center">
+          <div className="col-md-12 d-flex justify-content-center">
+            <div className="card p-4 shadow" style={{ maxWidth: '1000px', width: '100%' }}>
+              <div className="d-flex align-items-center">
+                <img
+                  src="/assets2/founder1.jpg"
+                  alt="Founder"
+                  className="founder-img me-3"
                 />
-                <div className="store-info bg-white p-3 rounded shadow-sm">
-                  <ul className="list-unstyled mb-0">
-                    <li className="mb-2">
-                      <i className="bi bi-geo-alt-fill text-primary me-2"></i>
-                      <strong>Location:</strong> 123 Fitness Street, Gym District, City - 560001
-                    </li>
-                    <li className="mb-2">
-                      <i className="bi bi-clock-fill text-primary me-2"></i>
-                      <strong>Timings:</strong> Mon-Sat: 7:00 AM - 9:00 PM | Sun: 9:00 AM - 6:00 PM
-                    </li>
-                    <li>
-                      <i className="bi bi-telephone-fill text-primary me-2"></i>
-                      <strong>Contact:</strong> +91 9876543210
-                    </li>
-                  </ul>
+                <div>
+                  <h5 className="fw-bold mb-1">Tushar Falke</h5>
+                  <p className="text-muted small mb-2">Founder & Nutrition Expert</p>
                 </div>
               </div>
+              <p className="mt-3 mb-0">
+                "I founded this store to empower individuals with the right nutrition to transform their lives. With a background in sports nutrition, I'm committed to quality, authenticity, and your goals."
+              </p>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Our Brands */}
-      <section className="brands-section py-5">
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="fw-bold mb-3">Our Trusted Brands</h2>
-            <p className="lead">We provide only 100% genuine and certified products from top international and Indian brands.</p>
-          </div>
-          
-          <div className="row g-4 justify-content-center">
-            {brands.map((brand, index) => (
-              <div key={index} className="col-6 col-md-4 col-lg-2">
-                <div className="brand-item p-3 d-flex align-items-center justify-content-center bg-white rounded shadow-sm">
-                  <img src={brand.logo} alt={brand.name} className="img-fluid" style={{maxHeight: '50px'}} />
+        <div className="row mb-5 justify-content-center">
+          <div className="col-md-12 d-flex justify-content-center">
+            <div className="card p-4 shadow" style={{ maxWidth: '1000px', width: '100%' }}>
+              <div className="d-flex align-items-center">
+                <img
+                  src="/assets2/founder2.jpg"
+                  alt="Founder"
+                  className="founder-img me-3"
+                />
+                <div>
+                  <h5 className="fw-bold mb-1">Adil Mulani</h5>
+                  <p className="text-muted small mb-2">Founder & Nutrition Expert</p>
                 </div>
               </div>
-            ))}
+              <p className="mt-3 mb-0">
+                "I founded this store to empower individuals with the right nutrition to transform their lives. With a background in sports nutrition, I'm committed to quality, authenticity, and your goals."
+              </p>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Certifications */}
-      <section className="certifications py-5 bg-light">
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="fw-bold mb-3">Our Certifications</h2>
-            <p className="mb-4">All our products are sourced from verified distributors and certified for quality assurance.</p>
-          </div>
-          
-          <div className="row justify-content-center">
-            {certifications.map((cert, index) => (
-              <div key={index} className="col-6 col-md-4 col-lg-2 mb-4">
-                <div className="cert-item text-center p-3">
-                  <img src={cert.image} alt={cert.name} className="img-fluid mb-3" style={{height: '80px'}} />
-                  <h5 className="mb-0">{cert.name}</h5>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Reviews Swiper Section */}
+      <ReviewSwiper />
 
-      {/* Product Categories */}
-      <section className="categories py-5">
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="fw-bold mb-3">Our Product Categories</h2>
-            <p className="lead">Everything you need for your fitness journey in one place</p>
-          </div>
-          
-          <div className="row g-4">
-            {categories.map((category, index) => (
-              <div key={index} className="col-6 col-md-4 col-lg-2-4">
-                <div className="category-card text-center p-3 rounded shadow-sm h-100">
-                  <div className="category-image mb-3">
-                    <img src={category.image} alt={category.name} className="img-fluid rounded" />
-                  </div>
-                  <h5 className="mb-0">
-                    {category.name} {category.emoji}
-                  </h5>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="testimonials py-5 bg-light">
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="fw-bold mb-3">What Our Customers Say</h2>
-            <p className="lead">Hear from fitness enthusiasts who trust our products</p>
-          </div>
-          
-          <div className="row g-4">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="col-md-4">
-                <div className="testimonial-card p-4 bg-white rounded shadow-sm h-100">
-                  <div className="d-flex align-items-center mb-3">
-                    <img src={testimonial.image} alt={testimonial.name} className="rounded-circle me-3" width="60" />
-                    <div>
-                      <h5 className="mb-1">{testimonial.name}</h5>
-                      <p className="text-muted mb-0 small">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  <div className="mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <i 
-                        key={i} 
-                        className={`bi bi-star-fill ${i < testimonial.rating ? 'text-warning' : 'text-secondary'}`}
-                      ></i>
-                    ))}
-                  </div>
-                  <p className="mb-0">"{testimonial.text}"</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="cta-section py-5 bg-primary text-white">
-        <div className="container text-center">
-          <h2 className="fw-bold mb-4">Ready to Boost Your Performance?</h2>
-          <p className="lead mb-4">Visit our store or shop online for the best supplements in town</p>
-          <div className="d-flex justify-content-center gap-3 flex-wrap">
-            <a href="https://maps.google.com" className="btn btn-light btn-lg px-4">
-              <i className="bi bi-geo-alt-fill me-2"></i> Visit Our Store
-            </a>
-            <a href="/shop" className="btn btn-outline-light btn-lg px-4">
-              <i className="bi bi-cart-fill me-2"></i> Shop Now
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Products Section */}
+      <div className="all-product-container">
+        <h3 className="text-center fw-bold mb-4">Look At Our Products</h3>
+        <SectionCard />
+      </div>
     </div>
   );
 };
