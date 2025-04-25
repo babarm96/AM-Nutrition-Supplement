@@ -1,194 +1,50 @@
-// import React, { useState } from "react";
-// import { Carousel, Button } from "react-bootstrap";
-// import "./Carausal.css"; // Updated CSS with fixes
-
-// const Carausal = () => {
-//   const slides = [
-//     {
-//       id: 1,
-//       bgImage: "./assets2/bg1.jpeg",
-//       productImage: "./assets2/prr1.png",
-//       title: "Exclusive Offer on Product 1",
-//       description: "Get 30% OFF on your first purchase. Limited time deal!",
-//     },
-//     {
-//       id: 2,
-//       bgImage: "./assets2/bg2.jpeg",
-//       productImage: "./assets2/pr2.jpg",
-//       title: "New Arrivals - Product 2",
-//       description: "Experience premium quality at the best price!",
-//     },
-//     {
-//       id: 3,
-//       bgImage: "./assets2/bg3.jpeg",
-//       productImage: "./assets2/pr3.jpeg",
-//       title: "Limited Stock - Product 3",
-//       description: "Hurry! Only a few left in stock. Order now!",
-//     },
-//   ];
-
-//   const [activeIndex, setActiveIndex] = useState(0);
-
-//   return (
-//     <Carousel
-//       fade
-//       interval={3000}
-//       wrap={true}
-//       className="custom-carousel"
-//       onSelect={(selectedIndex) => setActiveIndex(selectedIndex)}
-//     >
-//       {slides.map((slide, index) => (
-//         <Carousel.Item
-//           key={slide.id}
-//           style={{
-//             backgroundImage: `url(${slide.bgImage})`,
-//           }}
-//           className={`carousel-item ${
-//             index === activeIndex ? "active-slide" : ""
-//           }`}
-//         >
-//           {/* Content Wrapper */}
-//           <div className="carousel-content bg-transparent">
-//             {/* Centered Product Card */}
-//             <div className="product-card bg-transparent d-flex">
-//               {/* Left Side - Product Info */}
-//               <div className="left-content">
-//                 <h2 className="product-title ">{slide.title}</h2>
-//                 <p className="product-description">{slide.description}</p>
-//                 <Button className="buy-now-btn ">Buy Now</Button>
-//               </div>
-
-//               {/* Right Side - Product Image */}
-//               <div className="right-content">
-//                 <div className=""><img
-//                   src={slide.productImage}
-//                   alt="Product"
-//                   className="product-image"
-//                 />
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </Carousel.Item>
-//       ))}
-//     </Carousel>
-//   );
-// };
-
-// export default Carausal;
-
-
-
-
-
-import React, { useState, useEffect } from "react";
-import "./Carausal.css"; // Keeping your custom CSS
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "./Carausal.css"; // Your custom styles
 
 const Carausal = () => {
+  const navigate = useNavigate();
+
   const slides = [
-    {
-      id: 1,
-      bgImage: "./assets2/bg1.jpeg",
-      productImage: "./assets2/prr1.png",
-      title: "Exclusive Offer on Product 1",
-      description: "Get 30% OFF on your first purchase. Limited time deal!",
-    },
-    {
-      id: 2,
-      bgImage: "./assets2/bg2.jpeg",
-      productImage: "./assets2/pr2.jpg",
-      title: "New Arrivals - Product 2",
-      description: "Experience premium quality at the best price!",
-    },
-    {
-      id: 3,
-      bgImage: "./assets2/bg3.jpeg",
-      productImage: "./assets2/pr3.jpeg",
-      title: "Limited Stock - Product 3",
-      description: "Hurry! Only a few left in stock. Order now!",
-    },
+    { img: "/assets2/banner1.png", path: "/cards/protein" },
+    { img: "/assets2/banner2.jpg", path: "/cards/vitamins" },
+    { img: "/assets2/banner3.jpg", path: "/cards/workout" },
+    { img: "/assets2/banner4.jpg", path: "/cards/weight-gainer" },
+    { img: "/assets2/banner5.jpg", path: "/cards/combo" },
+    { img: "/assets2/banner6.jpg", path: "/cards/energy" },
+    { img: "/assets2/banner7.jpg", path: "/cards/immunity" },
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  // Auto slide every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) =>
-        prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [slides.length]);
-
   return (
-    <div
-      id="customCarousel"
-      className="carousel slide custom-carousel"
-      data-bs-ride="carousel"
-    >
-      <div className="carousel-inner">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`carousel-item ${index === activeIndex ? "active" : ""}`}
-            style={{
-              backgroundImage: `url(${slide.bgImage})`,
-            }}
-          >
-            {/* Content Wrapper */}
-            <div className="carousel-content">
-              {/* Centered Product Card */}
-              <div className="product-card d-flex">
-                {/* Left Side - Product Info */}
-                <div className="left-content">
-                  <h2 className="product-title">{slide.title}</h2>
-                  <p className="product-description">{slide.description}</p>
-                  <button className="buy-now-btn">Buy Now</button>
-                </div>
+    <div className="carousel-wrapper" style={{ position: "relative" }}>
+      {/* Custom Navigation Buttons */}
+      <button id="swiper-prev" className="swiper-button prev-button">‹</button>
+      <button id="swiper-next" className="swiper-button next-button">›</button>
 
-                {/* Right Side - Product Image */}
-                <div className="right-content">
-                  <img
-                    src={slide.productImage}
-                    alt="Product"
-                    className="product-image"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* Swiper Component */}
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={20}
+        navigation={{ prevEl: "#swiper-prev", nextEl: "#swiper-next" }}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        modules={[Navigation, Autoplay]}
+        className="bestSellingSwiper"
+      >
+        {slides.map((slide, idx) => (
+          <SwiperSlide key={idx}>
+            <img
+              src={slide.img}
+              alt={`Slide ${idx + 1}`}
+              style={{ width: "100%", height: "auto", cursor: "pointer" }}
+              onClick={() => navigate(slide.path)}
+            />
+          </SwiperSlide>
         ))}
-      </div>
-
-      {/* Carousel Controls */}
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#customCarousel"
-        data-bs-slide="prev"
-        onClick={() =>
-          setActiveIndex(
-            activeIndex === 0 ? slides.length - 1 : activeIndex - 1
-          )
-        }
-      >
-        <span className="carousel-control-prev-icon"></span>
-      </button>
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#customCarousel"
-        data-bs-slide="next"
-        onClick={() =>
-          setActiveIndex(
-            activeIndex === slides.length - 1 ? 0 : activeIndex + 1
-          )
-        }
-      >
-        <span className="carousel-control-next-icon"></span>
-      </button>
+      </Swiper>
     </div>
   );
 };

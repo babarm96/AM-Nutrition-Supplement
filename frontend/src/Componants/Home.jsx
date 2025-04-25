@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import SectionCard from "./SectionCard";
 import "./Home.css";
 import BrandsSection from "./BrandsSection";
+import ReviewSwiper from "./ReviewSwiper";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -45,14 +46,15 @@ const Home = () => {
   return (
     <>
       <Carausal />
-      <SectionCard />
-
- 
+      <div className="all-product-container">
+          <h1 className="mb-2 text-center fw-bold">Look At Our Products</h1>
+          <SectionCard />
+          </div>
 
       {/* Shop by Level Section */}
       <div className="level-container">
-        <h1 className="p-5 text-center">Shop by Level</h1>
-        <div className="card-container">
+        <h1 className="p-2 text-center fw-bold">Shop by Level</h1>
+        <div className="card-container mt-1">
           {levels.map((item, index) => (
             <div
               key={index}
@@ -70,6 +72,11 @@ const Home = () => {
 
       {/* Brands Section */}
       <BrandsSection />
+
+          {/* Reviews section  */}
+
+          <ReviewSwiper />
+
     </>
   );
 };

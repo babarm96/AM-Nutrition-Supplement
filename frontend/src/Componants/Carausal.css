@@ -1,178 +1,20 @@
-/* Main Carousel Styling */
-.custom-carousel .carousel-item {
-  height: 600px !important; /* Full height for the carousel */
-  background-size: cover !important;
-  background-position: center !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  position: relative !important;
+.swiper-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
 }
-
-/* Slide Animation */
-.custom-carousel .carousel-item.active-slide {
-  animation: fadeIn 1s ease-in-out !important;
+.prev-button {
+  left: 20px;
 }
-
-/* Main Content Wrapper */
-.carousel-content {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  height: 100% !important;
-  width: 100% !important;
-}
-
-/* Centered Product Card (Side by Side Layout) */
-.product-card {
-  width: 85% !important;
-  max-width: 1200px !important;
-  height: auto !important;
-  display: flex !important;
-  flex-direction: row !important; /* Ensures side-by-side layout */
-  justify-content: space-between !important;
-  align-items: center !important;
-  background: rgba(255, 255, 255, 0.12) !important;
-  backdrop-filter: blur(12px) !important;
-  padding: 40px 50px !important;
-  border-radius: 20px !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
-  animation: fadeIn 1s ease-in-out !important;
-}
-
-/* Left Side (Product Info) */
-.left-content {
-  flex: 1 !important;
-  text-align: left !important;
-  /* color: #fff !important; */
-  padding-right: 30px !important; /* Add spacing between text and image */
-}
-
-/* Product Title */
-.product-title {
-  font-size: 36px !important;
-  text-align: left !important;
-  margin-bottom: 10px !important;
-  font-weight: bold !important;
-  /* color: #fff !important; */
-}
-
-/* Product Description */
-.product-description {
-  font-size: 20px !important;
-  margin-bottom: 20px !important;
-  line-height: 1.5 !important;
-  color: #f1f1f1 !important;
-}
-
-/* Buy Now Button */
-.buy-now-btn {
-  background-color: #ff5733 !important;
-  border: none !important;
-  padding: 14px 30px !important;
-  font-size: 20px !important;
-  border-radius: 8px !important;
-  transition: all 0.3s ease-in-out !important;
-}
-
-.buy-now-btn:hover {
-  background-color: #d43f00 !important;
-  transform: scale(1.1) !important;
-}
-
-/* Right Side (Product Image) */
-.right-content {
-  flex: 1 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  
-}
-
-/* Product Image with Proper Size */
-.product-image {
-  width: 250px !important;
-  height:250px !important;
-  animation: zoomInOut 3s infinite alternate ease-in-out !important;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Continuous zoom effect for product image */
-@keyframes zoomInOut {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 992px) {
-  .product-card {
-    flex-direction: column !important; /* Stack on smaller screens */
-    width: 95% !important;
-    height: auto !important;
-    padding: 30px !important;
-    text-align: center !important;
-  }
-
-  .left-content {
-    text-align: center !important;
-    padding-right: 0 !important;
-    margin-bottom: 20px !important;
-  }
-
-  .product-title {
-    font-size: 28px !important;
-  }
-
-  .product-description {
-    font-size: 18px !important;
-  }
-
-  .buy-now-btn {
-    padding: 12px 25px !important;
-    font-size: 18px !important;
-  }
-
-  .product-image {
-    width: 300px !important;
-    margin-top: 20px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .product-card {
-    width: 100% !important;
-    padding: 20px !important;
-  }
-
-  .product-title {
-    font-size: 24px !important;
-  }
-
-  .product-description {
-    font-size: 16px !important;
-  }
-
-  .buy-now-btn {
-    padding: 10px 20px !important;
-    font-size: 16px !important;
-  }
-
-  .product-image {
-    width: 250px !important;
-  }
+.next-button {
+  right: 20px;
 }

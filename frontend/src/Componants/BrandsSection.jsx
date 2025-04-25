@@ -189,8 +189,8 @@ const BrandsSection = () => {
   };
 
   return (
-    <section className="brands-section">
-      <h2>Shop by Brand</h2>
+    <section className="brands-section mt-4">
+      <h2 className="text-dark">Shop by Brand</h2>
       <div className="container">
         <div className="row justify-content-center">
           {brands.map((brand) => (

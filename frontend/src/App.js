@@ -23,11 +23,7 @@ import Footer from './Componants/Footer';
 
 import BrandsSection from "./Componants/BrandsSection";
 import BrandProducts from "./Componants/BrandProducts";
-// import AllProducts from './Componants/AllProducts';
-// import Protins from './Componants/Protins';
-// import Multivitamins from './Componants/Multivitamins';
-// import PrePostWorkout from './Componants/PrePostWorkout';
-// import WeightGainer from './Componants/WeightGainer';
+
 import BeginnerLevel from './Componants/BeginnerLevel'
 import IntermediateLevel from './Componants/IntermediateLevel';
 import AdvancedLevel from './Componants/AdvancedLevel';
@@ -41,6 +37,9 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home/>}/>
+
+    
+
         {/* <Route path="/" element={<SectionCard />} /> */}
         {/* <Route path="/:section" element={<ProductList />} /> */}
         <Route path="/" element={<SectionCard />} />
