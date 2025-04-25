@@ -1,4 +1,3 @@
-
 import React from "react";
 import "../Style/BrandsSection.css";
 import { useNavigate } from "react-router-dom";
@@ -40,14 +39,13 @@ const brands = [
 const BrandsSection = () => {
   const navigate = useNavigate();
 
-  // Handle brand click
   const handleBrandClick = (url) => {
     navigate(url);
   };
 
   return (
-    <section className="brands-section">
-      <h2 className="text-dark">Shop by Brand</h2>
+    <section className="brands-section mt-4">
+      <h2 className="text-dark text-center mb-4">Shop by Brand</h2>
       <div className="container">
         <div className="row justify-content-center">
           {brands.map((brand) => (
@@ -60,7 +58,7 @@ const BrandsSection = () => {
                 onClick={() => handleBrandClick(brand.url)}
               >
                 <img src={brand.image} alt={brand.name} className="img-fluid p-2" />
-                <h3>{brand.name}</h3>
+                <h3 className="text-center">{brand.name}</h3>
               </div>
             </div>
           ))}
@@ -71,4 +69,3 @@ const BrandsSection = () => {
 };
 
 export default BrandsSection;
-
