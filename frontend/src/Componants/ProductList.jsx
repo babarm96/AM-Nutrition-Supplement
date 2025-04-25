@@ -1,287 +1,373 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import "../Style/ProductList.css";
+
+const ProductList = ({ category }) => {
+  const [products, setProducts] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [selectedFlavour, setSelectedFlavour] = useState("Cafe Mocha");
+  const [selectedWeight, setSelectedWeight] = useState("500 g (1.1 lb)");
+
+  useEffect(() => {
+    const fetchCategoryProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/AllProducts");
+        const allProducts = response.data;
+
+        const filteredProducts =
+          category === "All Products"
+            ? allProducts
+            : allProducts.filter(
+                (product) =>
+                  product.pcategory.trim().toLowerCase() ===
+                  category.trim().toLowerCase()
+              );
+
+        setProducts(filteredProducts);
+      } catch (error) {
+        console.error("Error fetching category products:", error);
+      }
+    };
+
+    if (category) {
+      fetchCategoryProducts();
+    }
+  }, [category]);
+
+  const handleShow = (product) => {
+    setSelectedProduct(product);
+    setQuantity(1);
+    setSelectedFlavour("Cafe Mocha");
+    setSelectedWeight("500 g (1.1 lb)");
+    setShowModal(true);
+  };
+
+  const handleClose = () => setShowModal(false);
+
+  const handleAddToCart = () => {
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    const productToAdd = {
+      ...selectedProduct,
+      quantity,
+      selectedFlavour,
+      selectedWeight,
+    };
+    cartData.push(productToAdd);
+    localStorage.setItem("cart", JSON.stringify(cartData));
+    setShowModal(false);
+  };
+
+  if (products.length === 0) {
+    return <div>No products available for this category.</div>;
+  }
+
+  return (
+    <div className="row">
+      {products.map((product) => (
+        <div
+          key={product.id}
+          className="col-md-4 col-lg-3 col-sm-6 col-12 mb-4 productlist-card-wrapper"
+        >
+          <div
+            className="productlist-card"
+            onClick={() => handleShow(product)}
+          >
+            <div className="productlist-badge-discount">
+              Upto {product.discount} OFF
+            </div>
+            {product.freeGift && (
+              <div className="productlist-badge-gift">Free gift</div>
+            )}
+            <div className="productlist-card-image-container">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="productlist-card-image"
+              />
+            </div>
+            <div className="productlist-card-title">
+              {product.title.split(" ").map((word, idx) => (
+                <div key={idx}>{word}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+
+      {selectedProduct && (
+        <Modal
+          show={showModal}
+          onHide={handleClose}
+          size="lg"
+          className="productlist-modal"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>{selectedProduct.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="row">
+              <div className="col-md-5">
+                <div className="productlist-modal-img-wrapper">
+                  <img
+                    src={selectedProduct.image}
+                    alt={selectedProduct.title}
+                    className="img-fluid productlist-modal-image"
+                  />
+                </div>
+              </div>
+              <div className="col-md-7">
+                <p className="productlist-description">
+                  A powerful pre-workout supplement for enhanced performance.
+                </p>
+
+                <div className="productlist-price-section">
+                  <span className="productlist-price-old">
+                    ₹{selectedProduct.oldPrice}
+                  </span>
+                  <span className="productlist-price-new">
+                    ₹{selectedProduct.pprice}
+                  </span>
+                </div>
+
+                <div className="productlist-veg-icon">
+                  <span className="veg-dot"></span> Veg
+                </div>
+
+                <div className="productlist-qty-control">
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>
+                    -
+                  </button>
+                  <span>{quantity}</span>
+                  <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                </div>
+
+                <div className="productlist-flavour-section">
+                  <p>
+                    Flavour: <strong>{selectedFlavour}</strong>
+                  </p>
+                  <div className="productlist-tags-container">
+                    {[
+                      "Cafe Mocha",
+                      "Cold Coffee",
+                      "Double Rich Chocolate",
+                      "Kesar Badam Pista",
+                      "Malai Kulfi",
+                      "Mango",
+                      "Rich Chocolate Creme",
+                      "Vanilla Ice Cream",
+                    ].map((flavor) => (
+                      <span
+                        key={flavor}
+                        className={`productlist-tag ${
+                          selectedFlavour === flavor ? "active" : ""
+                        }`}
+                        onClick={() => setSelectedFlavour(flavor)}
+                      >
+                        {flavor}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="productlist-weight-section">
+                  <p>
+                    Weight: <strong>{selectedWeight}</strong>
+                  </p>
+                  <div className="productlist-tags-container">
+                    {[
+                      "35 g (0.07 lb)",
+                      "500 g (1.1 lb)",
+                      "1 kg (2.2 lb)",
+                      "1.5 kg (3.3 lb)",
+                      "2 kg (4.4 lb)",
+                    ].map((weight) => (
+                      <span
+                        key={weight}
+                        className={`productlist-tag ${
+                          selectedWeight === weight ? "active" : ""
+                        }`}
+                        onClick={() => setSelectedWeight(weight)}
+                      >
+                        {weight}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="productlist-modal-buttons">
+                  <Button
+                    variant="primary"
+                    className="productlist-btn-cart"
+                    onClick={handleAddToCart}
+                  >
+                    Add to Cart 🛒
+                  </Button>
+                  <Button variant="danger" className="productlist-btn-buy">
+                    Buy Now ➜
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
+      )}
+    </div>
+  );
+};
+
+export default ProductList;
+
+
+
+
+
+
 
 // import React, { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
-// import { Container, Row, Col, Card, Button, Modal } from "react-bootstrap";
 // import axios from "axios";
-// import "./ProductList.css";
+// import Modal from "react-bootstrap/Modal";
+// import Button from "react-bootstrap/Button";
+// import "../Style/ProductList.css";
 
-// const ProductList = () => {
-//   const { section } = useParams();
+// const ProductList = ({ category }) => {
 //   const [products, setProducts] = useState([]);
-//   const [filteredProducts, setFilteredProducts] = useState([]);
 //   const [showModal, setShowModal] = useState(false);
 //   const [selectedProduct, setSelectedProduct] = useState(null);
 
-//   // Fetch product data from API
 //   useEffect(() => {
-//     const fetchProducts = async () => {
+//     const fetchCategoryProducts = async () => {
 //       try {
 //         const response = await axios.get("http://localhost:3000/AllProducts");
+//         const allProducts = response.data;
 
-//         // Format API response to required format
-//         const formattedData = response.data.map((item) => ({
-//           id: item.id,
-//           name: item.pname,
-//           price: parseInt(item.pprice), // Convert price to number
-//           discount: item.discount.replace("% OFF", ""), // Remove % OFF
-//           description: item.description,
-//           category: item.pcategory
-//             .toLowerCase()
-//             .replace(/\s+/g, "-")
-//             .replace("/", "-"), // Handle / in categories
-//           image: item.image,
-//         }));
+//         const filteredProducts =
+//           category === "All Products"
+//             ? allProducts
+//             : allProducts.filter(
+//                 (product) =>
+//                   product.pcategory.trim().toLowerCase() ===
+//                   category.trim().toLowerCase()
+//               );
 
-//         setProducts(formattedData);
+//         setProducts(filteredProducts);
 //       } catch (error) {
-//         console.error("Error fetching products:", error);
+//         console.error("Error fetching category products:", error);
 //       }
 //     };
 
-//     fetchProducts();
-//   }, []);
-
-//   // Filter products based on section
-//   useEffect(() => {
-//     if (section === "all-products") {
-//       setFilteredProducts(products); // Show all products
-//     } else {
-//       const filtered = products.filter(
-//         (product) => product.category === section
-//       );
-//       setFilteredProducts(filtered);
+//     if (category) {
+//       fetchCategoryProducts();
 //     }
-//   }, [section, products]);
+//   }, [category]);
 
-//   // Open Modal
 //   const handleShow = (product) => {
 //     setSelectedProduct(product);
 //     setShowModal(true);
 //   };
 
-//   // Close Modal
-//   const handleClose = () => setShowModal(false);
+//   const handleClose = () => {
+//     setShowModal(false);
+//   };
+
+//   if (products.length === 0) {
+//     return <div>No products available for this category.</div>;
+//   }
 
 //   return (
-//     <Container>
-//       <h2 className="text-center my-4 section-title">
-//         {section.replace("-", " ").toUpperCase()}
-//       </h2>
-//       <Row>
-//         {filteredProducts.length > 0 ? (
-//           filteredProducts.map((product) => (
-//             <Col key={product.id} md={4} lg={4} className="mb-4">
-//               <Card className="product-card">
-               
-//                 <Card.Body>
-//                 <Card.Img
-//                   variant="top"
-//                   src={product.image}
-//                   alt={product.name}
-//                   className="product-image"
-//                 />
-//                   <Card.Title className="product-name">{product.name}</Card.Title>
-//                   <Card.Text className="product-price">
-//                     <strong>₹{product.price}</strong>{" "}
-//                     <span className="text-success">
-//                       ({product.discount}% Off)
-//                     </span>
-//                   </Card.Text>
-//                   <Button
-//                     variant="outline-primary"
-//                     className="btn-view-details"
-//                     onClick={() => handleShow(product)}
-//                   >
-//                     View Details
-//                   </Button>
-//                 </Card.Body>
-//               </Card>
-//             </Col>
-//           ))
-//         ) : (
-//           <p className="text-center no-products">No products found in this category.</p>
-//         )}
-//       </Row>
+//     <div className="row">
+//       {products.map((product) => (
+//         <div key={product.id} className="col-md-3 mb-4">
+//           <div className="card pl-product-card shadow-sm" onClick={() => handleShow(product)}>
+//             <div className="pl-badge-discount">Upto {product.discount} OFF</div>
+//             {product.freeGift && <div className="pl-badge-gift">Free gift</div>}
+//             <div className="position-relative text-center p-3">
+//               <img src={product.image} alt={product.title} className="pl-product-image" />
+//               {product.freeGift && <div className="pl-free-sticker">FREE</div>}
+//             </div>
+//             <div className="card-body text-center pl-product-title">
+//               {product.title.split(" ").map((word, i) => (
+//                 <div key={i}>{word}</div>
+//               ))}
+//             </div>
+//           </div>
+//         </div>
+//       ))}
 
-//       {/* Product Modal */}
-//       <Modal show={showModal} onHide={handleClose} centered>
-//         {selectedProduct && (
-//           <>
-//             <Modal.Header closeButton className="modal-header-custom">
-//               <Modal.Title className="modal-title-custom">
-//                 {selectedProduct.name}
-//               </Modal.Title>
-//             </Modal.Header>
-//             <Modal.Body className="modal-body-custom">
-//               <img
-//                 src={selectedProduct.image}
-//                 alt={selectedProduct.name}
-//                 className="img-fluid mb-3 modal-img"
-//               />
-//               <p className="modal-description">
-//                 <strong>Description:</strong> {selectedProduct.description}
-//               </p>
-//               <p className="modal-price">
-//                 <strong>Price:</strong> ₹{selectedProduct.price}{" "}
-//                 <span className="text-success">
-//                   ({selectedProduct.discount}% Off)
-//                 </span>
-//               </p>
-//             </Modal.Body>
-//             <Modal.Footer>
-//               <Button variant="secondary" onClick={handleClose}>
-//                 Close
-//               </Button>
-//               <Button variant="success">Add to Cart</Button>
-//             </Modal.Footer>
-//           </>
-//         )}
-//       </Modal>
-//     </Container>
+//       {selectedProduct && (
+//         <Modal show={showModal} onHide={handleClose} size="lg" centered className="pl-product-modal">
+//           <Modal.Header closeButton>
+//             <Modal.Title>{selectedProduct.title}</Modal.Title>
+//           </Modal.Header>
+//           <Modal.Body>
+//             <div className="row">
+//               <div className="col-md-5 text-center">
+//                 <div className="pl-modal-img-wrapper">
+//                   <img src={selectedProduct.image} alt={selectedProduct.title} className="img-fluid" />
+//                   {selectedProduct.freeGift && <div className="pl-modal-free-sticker">FREE</div>}
+//                 </div>
+//               </div>
+//               <div className="col-md-7">
+//                 <p className="pl-description">
+//                   A powerful pre-workout supplement for enhanced performance.
+//                 </p>
+//                 <div className="pl-price-section mb-3">
+//                   <span className="pl-old-price">₹{selectedProduct.oldPrice}</span>
+//                   <span className="pl-new-price ms-2">₹{selectedProduct.pprice}</span>
+//                 </div>
+//                 <div className="mb-3">
+//                   <span className="pl-veg-icon"></span> Veg
+//                 </div>
+
+//                 <div className="pl-qty-control mb-3">
+//                   <Button variant="outline-secondary" size="sm">-</Button>
+//                   <span className="mx-2">1</span>
+//                   <Button variant="outline-secondary" size="sm">+</Button>
+//                 </div>
+
+//                 <div className="mb-3">
+//                   <p><strong>Flavour:</strong> Cafe Mocha</p>
+//                   <div className="pl-tag-group">
+//                     {["Cafe Mocha", "Cold Coffee", "Double Rich Chocolate", "Kesar Badam Pista", "Malai Kulfi", "Mango", "Rich Chocolate Creme", "Vanilla Ice Cream"].map(flavor => (
+//                       <span key={flavor} className={`pl-flavour-tag ${flavor === "Cafe Mocha" ? "pl-active" : ""}`}>{flavor}</span>
+//                     ))}
+//                   </div>
+//                 </div>
+
+//                 <div className="mb-4">
+//                   <p><strong>Weight:</strong> 500 g (1.1 lb)</p>
+//                   <div className="pl-tag-group">
+//                     {["35 g (0.07 lb)", "500 g (1.1 lb)", "1 kg (2.2 lb)", "1.5 kg (3.3 lb)", "2 kg (4.4 lb)"].map(weight => (
+//                       <span key={weight} className={`pl-weight-tag ${weight.includes("500 g") ? "pl-active" : ""}`}>{weight}</span>
+//                     ))}
+//                   </div>
+//                 </div>
+
+//                 <div className="d-flex gap-2">
+//                   <Button variant="primary" className="flex-fill">Add to Cart 🛒</Button>
+//                   <Button variant="danger" className="flex-fill">Buy Now ➜</Button>
+//                 </div>
+//               </div>
+//             </div>
+//           </Modal.Body>
+//         </Modal>
+//       )}
+//     </div>
 //   );
 // };
 
 // export default ProductList;
 
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Container, Row, Col, Modal, Button } from "react-bootstrap";  
-import axios from "axios";
-import "./ProductList.css";
-import { Card } from "react-bootstrap";
 
 
-const ProductList = () => {
-  const { section } = useParams();
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Fetch product data from API
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/AllProducts");
 
-        // Format API response to required format
-        const formattedData = response.data.map((item) => ({
-          id: item.id,
-          title: item.pname,
-          price: parseInt(item.pprice), // Convert price to number
-          oldPrice: parseInt(item.oldPrice || item.pprice) + 500, // Default old price
-          discount: item.discount.replace("% OFF", ""), // Remove % OFF
-          description: item.description,
-          category: item.pcategory
-            .toLowerCase()
-            .replace(/\s+/g, "-")
-            .replace("/", "-"), // Handle / in categories
-          image: item.image,
-          freeGift: item.freeGift || false,
-        }));
 
-        setProducts(formattedData);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
 
-    fetchProducts();
-  }, []);
 
-  // Filter products based on section
-  useEffect(() => {
-    if (section === "all-products") {
-      setFilteredProducts(products); // Show all products
-    } else {
-      const filtered = products.filter(
-        (product) => product.category === section
-      );
-      setFilteredProducts(filtered);
-    }
-  }, [section, products]);
 
-  // Open Modal
-  const handleShow = (product) => {
-    setSelectedProduct(product);
-    setShowModal(true);
-  };
 
-  // Close Modal
-  const handleClose = () => setShowModal(false);
 
-  return (
-    <Container>
-      <h2 className="text-center my-4 section-title">
-        {section.replace("-", " ").toUpperCase()}
-      </h2>
-      <Row className="product-container">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <Col key={product.id} md={4} lg={3} sm={6} xs={12} className="mb-4">
-  <Card className="product-card" onClick={() => handleShow(product)}>
-    <Card.Img
-      variant="top"
-      src={product.image}
-      alt={product.title}
-      className="product-image"
-    />
-    <Card.Body className="product-info">
-      <h3 className="product-title">{product.title}</h3>
-      <div className="product-pricing">
-        <span className="price">₹{product.price}</span>
-        <span className="old-price">₹{product.oldPrice}</span>
-      </div>
-    </Card.Body>
-    {product.freeGift && <div className="free-gift">Free Gift</div>}
-    <div className="discount-tag">Upto {product.discount}% OFF</div>
-  </Card>
-</Col>
-
-          ))
-        ) : (
-          <p className="text-center no-products">
-            No products found in this category.
-          </p>
-        )}
-      </Row>
-
-      {/* Product Modal */}
-      <Modal show={showModal} onHide={handleClose} centered>
-        {selectedProduct && (
-          <>
-            <Modal.Header closeButton className="modal-header-custom">
-              <Modal.Title className="modal-title-custom">
-                {selectedProduct.title}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="modal-body-custom">
-              <img
-                src={selectedProduct.image}
-                alt={selectedProduct.title}
-                className="img-fluid mb-3 modal-img"
-              />
-              <p className="modal-description">
-                <strong>Description:</strong> {selectedProduct.description}
-              </p>
-              <p className="modal-price">
-                <strong>Price:</strong> ₹{selectedProduct.price}{" "}
-                <span className="text-success">
-                  ({selectedProduct.discount}% Off)
-                </span>
-              </p>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="success">Add to Cart</Button>
-            </Modal.Footer>
-          </>
-        )}
-      </Modal>
-    </Container>
-  );
-};
-
-export default ProductList;

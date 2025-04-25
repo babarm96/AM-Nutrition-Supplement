@@ -1,43 +1,11 @@
 import React from 'react';
 import './About.css';
-import { 
-  brands, 
-  certifications, 
-  categories, 
-  testimonials 
-} from '../Componants/data';
+
 
 const About = () => {
-
-
   return (
     <div className="about-page">
-      {/* Hero Section */}
-      {/* <section className="hero-section">
-        <div className="container-fluid p-0 mt-5">
-          <div className="hero-image position-relative">
-            <img 
-              src="https://via.placeholder.com/1920x600?text=Gym+Supplements" 
-              alt="Gym Supplements" 
-              className="img-fluid w-100"
-            />
-            <div className="hero-overlay">
-              <div className="container">
-                <div className="hero-content text-center text-white">
-                  <h1 className="display-4 fw-bold mb-3">Fuel Your Fitness with the Best Supplements!</h1>
-                  <p className="lead mb-4">Trusted by athletes, recommended by experts – your one-stop shop for quality gym supplements.</p>
-                  <div className="d-flex justify-content-center gap-3">
-                    <button className="btn btn-primary btn-lg px-4">Shop Now</button>
-                    <button className="btn btn-outline-light btn-lg px-4">Learn More</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
-      {/* About Our Store */}
       <section className="about-store py-5 bg-light">
         <div className="container">
           <div className="row align-items-center">

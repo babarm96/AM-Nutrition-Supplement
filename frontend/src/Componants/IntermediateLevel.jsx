@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./AllLevelCss.css";
+import "../Style/AllLevelCss.css";
 
 const flavours = [
   "Cafe Mocha", "Cold Coffee", "Double Rich Chocolate", "Kesar Badam Pista",

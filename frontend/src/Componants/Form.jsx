@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { motion } from "framer-motion";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./Form.css"; // Custom styles
+import "../Style/Form.css"; // Updated styles
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -24,23 +23,24 @@ const Form = () => {
         "service_nyq8gvs", // Service ID
         "template_7bmdacp", // Template ID
         formData,
-        "FlzQftFg9BMDPKjWc" // public key
+        "FlzQftFg9BMDPKjWc" // Public key
       )
       .then(() => setSuccess(true))
       .catch((error) => console.error("EmailJS Error:", error));
   };
-  
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="signup-container"
+      className="protein-form-container"
     >
-      <div className="card shadow-lg p-4">
-        {/* <h2 className="text-center text-white">Inquiry</h2> */}
+      <div className="protein-form-card shadow-lg p-4">
         {success && (
-          <p className="text-success text-center">Inquiry sent successfully!</p>
+          <p className="protein-form-success-msg text-success text-center">
+            Inquiry sent successfully!
+          </p>
         )}
         <form onSubmit={handleSubmit}>
           <div className="row">
@@ -49,7 +49,7 @@ const Form = () => {
                 type="text"
                 name="name"
                 placeholder="Your Name *"
-                className="form-control"
+                className="protein-form-input form-control"
                 required
                 onChange={handleChange}
               />
@@ -59,7 +59,7 @@ const Form = () => {
                 type="tel"
                 name="phone"
                 placeholder="Phone Number *"
-                className="form-control"
+                className="protein-form-input form-control"
                 required
                 onChange={handleChange}
               />
@@ -70,7 +70,7 @@ const Form = () => {
               type="email"
               name="email"
               placeholder="Email *"
-              className="form-control"
+              className="protein-form-input form-control"
               required
               onChange={handleChange}
             />
@@ -79,7 +79,7 @@ const Form = () => {
             <textarea
               name="message"
               placeholder="Say something..."
-              className="form-control"
+              className="protein-form-textarea form-control"
               rows="4"
               required
               onChange={handleChange}
@@ -88,7 +88,7 @@ const Form = () => {
           <motion.button
             whileHover={{ scale: 1.1 }}
             type="submit"
-            className="btn btn-dark w-100"
+            className="protein-form-button btn btn-dark w-100"
           >
             Submit
           </motion.button>

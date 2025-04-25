@@ -1,6 +1,5 @@
-// src/components/AuthModal.js
 import React, { useState } from "react";
-import "./Login.css";
+import "../Style/Login.css";
 
 const Login = ({ showModal, handleClose }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -58,7 +57,7 @@ const Login = ({ showModal, handleClose }) => {
       style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
     >
       <div className="modal-dialog modal-dialog-centered" role="document">
-        <div className="modal-content auth-container">
+        <div className="modal-content protein-auth-container">
           <div className="modal-header">
             <h5 className="modal-title">{isLogin ? "Login" : "Sign Up"}</h5>
             <button type="button" className="close" onClick={handleClose}>
@@ -67,7 +66,7 @@ const Login = ({ showModal, handleClose }) => {
           </div>
 
           <div className="modal-body">
-            <div className="auth-card">
+            <div className="protein-auth-card">
               <form onSubmit={handleSubmit}>
                 {/* Show Full Name for Sign Up */}
                 {!isLogin && (
@@ -77,7 +76,7 @@ const Login = ({ showModal, handleClose }) => {
                       <input
                         type="text"
                         name="name"
-                        className="form-control"
+                        className="form-control protein-auth-input"
                         placeholder="Enter full name"
                         value={name}
                         onChange={handleChange}
@@ -90,7 +89,7 @@ const Login = ({ showModal, handleClose }) => {
                       <input
                         type="tel"
                         name="mobile"
-                        className="form-control"
+                        className="form-control protein-auth-input"
                         placeholder="Enter mobile number"
                         value={mobile}
                         onChange={handleChange}
@@ -103,7 +102,7 @@ const Login = ({ showModal, handleClose }) => {
                       <input
                         type="number"
                         name="age"
-                        className="form-control"
+                        className="form-control protein-auth-input"
                         placeholder="Enter your age"
                         value={age}
                         onChange={handleChange}
@@ -116,7 +115,7 @@ const Login = ({ showModal, handleClose }) => {
                       <input
                         type="text"
                         name="address"
-                        className="form-control"
+                        className="form-control protein-auth-input"
                         placeholder="Enter your address"
                         value={address}
                         onChange={handleChange}
@@ -129,7 +128,7 @@ const Login = ({ showModal, handleClose }) => {
                       <input
                         type="text"
                         name="city"
-                        className="form-control"
+                        className="form-control protein-auth-input"
                         placeholder="Enter city"
                         value={city}
                         onChange={handleChange}
@@ -145,7 +144,7 @@ const Login = ({ showModal, handleClose }) => {
                   <input
                     type="email"
                     name="email"
-                    className="form-control"
+                    className="form-control protein-auth-input"
                     placeholder="Enter email"
                     value={email}
                     onChange={handleChange}
@@ -158,7 +157,7 @@ const Login = ({ showModal, handleClose }) => {
                   <input
                     type="password"
                     name="password"
-                    className="form-control"
+                    className="form-control protein-auth-input"
                     placeholder="Enter password"
                     value={password}
                     onChange={handleChange}
@@ -173,7 +172,7 @@ const Login = ({ showModal, handleClose }) => {
                     <input
                       type="password"
                       name="confirmPassword"
-                      className="form-control"
+                      className="form-control protein-auth-input"
                       placeholder="Confirm password"
                       value={confirmPassword}
                       onChange={handleChange}
@@ -187,7 +186,7 @@ const Login = ({ showModal, handleClose }) => {
                   {!isLogin && (
                     <>
                       {/* Sign Up Button */}
-                      <button type="submit" className="btn auth-btn">
+                      <button type="submit" className="btn protein-auth-btn">
                         Sign Up
                       </button>
 
@@ -203,7 +202,7 @@ const Login = ({ showModal, handleClose }) => {
                   )}
 
                   {isLogin && (
-                    <button type="submit" className="btn auth-btn w-100">
+                    <button type="submit" className="btn protein-auth-btn w-100">
                       Login
                     </button>
                   )}
@@ -215,7 +214,7 @@ const Login = ({ showModal, handleClose }) => {
                 <p className="text-center mt-3">
                   Don't have an account?{" "}
                   <span
-                    className="auth-link"
+                    className="protein-auth-link"
                     style={{ cursor: "pointer" }}
                     onClick={() => setIsLogin(false)}
                   >
