@@ -34,23 +34,65 @@ const About = () => {
       `}</style>
 
       {/* About Title Section */}
-      <div className="text-center mb-5">
-        <h2 
-          className="fw-bold" 
-          style={{ 
-            fontSize: '2.5rem', 
-            textShadow: '2px 2px 6px rgba(0, 0, 0, 0.3)', 
-            color: 'black' 
+              <div
+          className="ns-about-banner d-flex flex-column justify-content-center align-items-center text-center m-auto"
+          style={{
+            height: "300px",
+            width: "100%",
+            borderRadius: "30px",
+            background: "#3B3D3F",
+            color: "#212529",
           }}
         >
-          About Our Store
-        </h2>
-        <p className="lead">Providing premium quality supplements since 2010</p>
-        <p>We offer a wide range of products backed by science, quality certifications, and expert recommendations.</p>
-      </div>
+          <h2
+            className="fw-bold"
+            style={{
+              fontSize: "90px",
+            fontFamily: "Georgia, serif",
+              textShadow: "2px 2px 6px rgba(230, 219, 219, 0.3)",
+            }}
+          >
+            About Our Store
+          </h2>
+          <p className="lead text-white mt-2">
+            Providing premium quality supplements since 2010
+          </p>
+          <p className="mt-1 text-white">
+            We offer a wide range of products backed by science, quality certifications, and expert recommendations.
+          </p>
+
+          <div className="flex m-3">
+          <a
+            href="/"
+            style={{
+              fontSize: "20px",
+              fontFamily: "Arial, sans-serif",
+              textDecoration: "none",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            Home Page
+          </a>
+          <a
+            href="/about"
+            style={{
+              fontSize: "20px",
+              fontFamily: "Arial, sans-serif",
+              textDecoration: "none",
+              color: "white",
+              fontWeight: "bold",
+              marginLeft: "10px",
+            }}
+          >
+            <span>◉</span> About 
+          </a>
+        </div>
+        </div>
+
 
       {/* Office Info Section */}
-      <div className="row mb-5 justify-content-center">
+      <div className="row mt-5 mb-5 justify-content-center">
         <div className="col-md-12">
           <div className="card shadow p-4 bg-light mx-auto text-center" style={{ maxWidth: '900px' }}>
             <h4 className="fw-bold mb-3 text-center">Our Office</h4>

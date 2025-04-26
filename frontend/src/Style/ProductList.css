@@ -7,6 +7,7 @@
   padding: 15px;
   border-radius: 12px;
   height: 360px;
+  width: 270px;
   background-color: #fff;
   cursor: pointer;
   position: relative;
@@ -16,23 +17,26 @@
   justify-content: space-between;
 }
 
-.gympro-badge-discount,
-.gympro-badge-gift {
+.productlist-badge-container {
   position: absolute;
   top: 8px;
   left: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.productlist-badge-discount,
+.productlist-badge-gift {
   background-color: #ff5722;
   color: #fff;
   padding: 3px 8px;
   font-size: 12px;
   border-radius: 4px;
-  z-index: 2;
+  font-weight: bold;
 }
 
-.gympro-badge-gift {
-  top: 35px;
-  background-color: #4caf50;
-}
 
 .gympro-card-image-container {
   width: 100%;
@@ -122,6 +126,7 @@
 .gympro-tags-container {
   display: flex;
   flex-wrap: wrap;
+
   gap: 8px;
   margin-bottom: 15px;
 }
@@ -154,3 +159,5 @@
   font-size: 16px;
   border-radius: 6px;
 }
+
+
