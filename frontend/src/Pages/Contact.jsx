@@ -12,10 +12,10 @@ const Contact = () => {
         className="items-center justify-center px-4 m-auto"
         style={{
           height: "300px",
-          background: "black",
+          background: "#3B3D3F",
           borderRadius: "30px",
           textAlign: "center",
-          width: "80%",
+          width: "100%",
         }}
       >
         <h2
@@ -23,10 +23,13 @@ const Contact = () => {
           style={{
             fontSize: "100px",
             fontFamily: "Georgia, serif",
+            textShadow: "2px 2px 6px rgba(230, 219, 219, 0.3)",
           }}
         >
           <b>Contact Us</b>
         </h2>
+
+       
 
         {/* Navigation Links */}
         <div className="flex m-3">
