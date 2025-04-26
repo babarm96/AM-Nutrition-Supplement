@@ -34,61 +34,64 @@ const About = () => {
       `}</style>
 
       {/* About Title Section */}
-              <div
-          className="ns-about-banner d-flex flex-column justify-content-center align-items-center text-center m-auto"
-          style={{
-            height: "300px",
-            width: "100%",
-            borderRadius: "30px",
-            background: "#3B3D3F",
-            color: "#212529",
-          }}
-        >
-          <h2
-            className="fw-bold"
+              <div className="container my-5">
+          <div
+            className="row justify-content-center align-items-center text-center"
             style={{
-              fontSize: "90px",
-            fontFamily: "Georgia, serif",
-              textShadow: "2px 2px 6px rgba(230, 219, 219, 0.3)",
+              background: "#3B3D3F",
+              borderRadius: "30px",
+              color: "#212529",
+              padding: "40px 20px",
             }}
           >
-            About Our Store
-          </h2>
-          <p className="lead text-white mt-2">
-            Providing premium quality supplements since 2010
-          </p>
-          <p className="mt-1 text-white">
-            We offer a wide range of products backed by science, quality certifications, and expert recommendations.
-          </p>
+            <div className="col-12">
+              <h2
+                className="fw-bold"
+                style={{
+                  fontSize: "clamp(40px, 8vw, 90px)",
+                  fontFamily: "Georgia, serif",
+                  textShadow: "2px 2px 6px rgba(230, 219, 219, 0.3)",
+                  color: "black",
+                }}
+              >
+                About Our Store
+              </h2>
+            </div>
+            <div className="col-12 col-md-10 mt-3">
+              <p className="lead text-white">
+                Providing premium quality supplements since 2010
+              </p>
+              <p className="text-white">
+                We offer a wide range of products backed by science, quality certifications, and expert recommendations.
+              </p>
+            </div>
+            <div className="col-12 d-flex justify-content-center flex-wrap mt-3">
+              <a
+                href="/"
+                className="btn text-light m-2"
+                style={{
+                  fontSize: "18px",
+                  fontFamily: "Arial, sans-serif",
+                  fontWeight: "bold",
+                }}
+              >
+                Home Page
+              </a>
+              <a
+                href="/about"
+                className="btn text-light m-2"
+                style={{
+                  fontSize: "18px",
+                  fontFamily: "Arial, sans-serif",
+                  fontWeight: "bold",
+                }}
+              >
+                <span>◉</span> About
+              </a>
+            </div>
+          </div>
+        </div>
 
-          <div className="flex m-3">
-          <a
-            href="/"
-            style={{
-              fontSize: "20px",
-              fontFamily: "Arial, sans-serif",
-              textDecoration: "none",
-              color: "white",
-              fontWeight: "bold",
-            }}
-          >
-            Home Page
-          </a>
-          <a
-            href="/about"
-            style={{
-              fontSize: "20px",
-              fontFamily: "Arial, sans-serif",
-              textDecoration: "none",
-              color: "white",
-              fontWeight: "bold",
-              marginLeft: "10px",
-            }}
-          >
-            <span>◉</span> About 
-          </a>
-        </div>
-        </div>
 
 
       {/* Office Info Section */}
