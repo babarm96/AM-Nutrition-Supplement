@@ -131,6 +131,8 @@ const About = () => {
         <h3 className="text-center fw-bold mb-4">Look At Our Products</h3>
         <SectionCard />
       </div>
+
+
     </div>
   );
 };

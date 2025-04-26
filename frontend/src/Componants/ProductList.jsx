@@ -70,26 +70,23 @@ const ProductList = ({ category }) => {
       {products.map((product) => (
         <div
           key={product.id}
-          className="col-md-4 col-lg-3 col-sm-6 col-12 mb-4 productlist-card-wrapper"
+          className="col-md-4 col-lg-3 col-sm-6 col-12 mb-4 gympro-card-wrapper"
         >
-          <div
-            className="productlist-card"
-            onClick={() => handleShow(product)}
-          >
-            <div className="productlist-badge-discount">
+          <div className="gympro-card" onClick={() => handleShow(product)}>
+            <div className="gympro-badge-discount">
               Upto {product.discount} OFF
             </div>
             {product.freeGift && (
-              <div className="productlist-badge-gift">Free gift</div>
+              <div className="gympro-badge-gift">Free gift</div>
             )}
-            <div className="productlist-card-image-container">
+            <div className="gympro-card-image-container">
               <img
                 src={product.image}
                 alt={product.title}
-                className="productlist-card-image"
+                className="gympro-card-image"
               />
             </div>
-            <div className="productlist-card-title">
+            <div className="gympro-card-title">
               {product.title.split(" ").map((word, idx) => (
                 <div key={idx}>{word}</div>
               ))}
@@ -99,57 +96,46 @@ const ProductList = ({ category }) => {
       ))}
 
       {selectedProduct && (
-        <Modal
-          show={showModal}
-          onHide={handleClose}
-          size="lg"
-          className="productlist-modal"
-        >
+        <Modal show={showModal} onHide={handleClose} size="lg" className="gympro-modal">
           <Modal.Header closeButton>
             <Modal.Title>{selectedProduct.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="row">
               <div className="col-md-5">
-                <div className="productlist-modal-img-wrapper">
+                <div className="gympro-modal-img-wrapper">
                   <img
                     src={selectedProduct.image}
                     alt={selectedProduct.title}
-                    className="img-fluid productlist-modal-image"
+                    className="img-fluid gympro-modal-image"
                   />
                 </div>
               </div>
               <div className="col-md-7">
-                <p className="productlist-description">
+                <p className="gympro-description">
                   A powerful pre-workout supplement for enhanced performance.
                 </p>
 
-                <div className="productlist-price-section">
-                  <span className="productlist-price-old">
-                    ₹{selectedProduct.oldPrice}
-                  </span>
-                  <span className="productlist-price-new">
-                    ₹{selectedProduct.pprice}
-                  </span>
+                <div className="gympro-price-section">
+                  <span className="gympro-price-old">₹{selectedProduct.oldPrice}</span>
+                  <span className="gympro-price-new">₹{selectedProduct.pprice}</span>
                 </div>
 
-                <div className="productlist-veg-icon">
-                  <span className="veg-dot"></span> Veg
+                <div className="gympro-veg-icon">
+                  <span className="gympro-veg-dot"></span> Veg
                 </div>
 
-                <div className="productlist-qty-control">
-                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>
-                    -
-                  </button>
+                <div className="gympro-qty-control">
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
                   <span>{quantity}</span>
                   <button onClick={() => setQuantity(quantity + 1)}>+</button>
                 </div>
 
-                <div className="productlist-flavour-section">
+                <div className="gympro-flavour-section">
                   <p>
                     Flavour: <strong>{selectedFlavour}</strong>
                   </p>
-                  <div className="productlist-tags-container">
+                  <div className="gympro-tags-container">
                     {[
                       "Cafe Mocha",
                       "Cold Coffee",
@@ -162,9 +148,7 @@ const ProductList = ({ category }) => {
                     ].map((flavor) => (
                       <span
                         key={flavor}
-                        className={`productlist-tag ${
-                          selectedFlavour === flavor ? "active" : ""
-                        }`}
+                        className={`gympro-tag ${selectedFlavour === flavor ? "active" : ""}`}
                         onClick={() => setSelectedFlavour(flavor)}
                       >
                         {flavor}
@@ -173,11 +157,11 @@ const ProductList = ({ category }) => {
                   </div>
                 </div>
 
-                <div className="productlist-weight-section">
+                <div className="gympro-weight-section">
                   <p>
                     Weight: <strong>{selectedWeight}</strong>
                   </p>
-                  <div className="productlist-tags-container">
+                  <div className="gympro-tags-container">
                     {[
                       "35 g (0.07 lb)",
                       "500 g (1.1 lb)",
@@ -187,9 +171,7 @@ const ProductList = ({ category }) => {
                     ].map((weight) => (
                       <span
                         key={weight}
-                        className={`productlist-tag ${
-                          selectedWeight === weight ? "active" : ""
-                        }`}
+                        className={`gympro-tag ${selectedWeight === weight ? "active" : ""}`}
                         onClick={() => setSelectedWeight(weight)}
                       >
                         {weight}
@@ -198,15 +180,15 @@ const ProductList = ({ category }) => {
                   </div>
                 </div>
 
-                <div className="productlist-modal-buttons">
+                <div className="gympro-modal-buttons">
                   <Button
                     variant="primary"
-                    className="productlist-btn-cart"
+                    className="gympro-btn-cart"
                     onClick={handleAddToCart}
                   >
                     Add to Cart 🛒
                   </Button>
-                  <Button variant="danger" className="productlist-btn-buy">
+                  <Button variant="danger" className="gympro-btn-buy">
                     Buy Now ➜
                   </Button>
                 </div>
@@ -220,6 +202,8 @@ const ProductList = ({ category }) => {
 };
 
 export default ProductList;
+
+
 
 
 

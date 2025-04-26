@@ -1,105 +1,209 @@
-.bp-product-section {
-  padding: 20px !important;
-  background-color: #f8f9fa !important;
+/* BrandProducts.css */
+
+.bp-section {
+  padding: 2rem;
+  background-color: #f9f9f9;
 }
 
-.bp-product-container {
-  margin-top: 20px !important;
+.bp-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
-.bp-product-card {
-  border: 1px solid #ddd !important;
-  border-radius: 10px !important;
-  padding: 15px !important;
-  width: 100% !important;
-  text-align: center !important;
-  background-color: #fff !important;
-  transition: transform 0.2s !important;
-  cursor: pointer !important;
+.bp-products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.bp-product-card:hover {
-  transform: scale(1.05) !important;
+.bp-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
 }
 
-.bp-product-card img {
-  max-width: 100% !important;
-  height: auto !important;
-  border-radius: 8px !important;
+.bp-card-image {
+  max-width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 1rem;
 }
 
-.bp-product-card h3 {
-  font-size: 1.2rem !important;
-  margin-top: 10px !important;
+.bp-card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
-.bp-price {
-  color: green !important;
-  font-weight: bold !important;
+.bp-card-offer {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.bp-old-price {
-  text-decoration: line-through !important;
-  color: #999 !important;
+.bp-discount-badge {
+  background: #ff5733;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
-.bp-discount {
-  color: red !important;
+.bp-freegift-badge {
+  background: #00bfff;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
-.bp-no-products {
-  font-size: 1.2rem !important;
-  color: #ff4d4f !important;
+.bp-viewdetails-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
 }
 
-.bp-custom-modal {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  z-index: 1050 !important;
+.bp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
-.bp-modal-content {
-  background-color: #fff !important;
-  border-radius: 10px !important;
-  width: 90% !important;
-  max-width: 600px !important;
-  padding: 20px !important;
+.bp-modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  overflow: hidden;
 }
 
 .bp-modal-header {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  border-bottom: 1px solid #ddd !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
 }
 
 .bp-modal-title {
-  font-size: 1.5rem !important;
-  margin: 0 !important;
+  font-size: 1.5rem;
+}
+
+.bp-modal-close {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .bp-modal-body {
-  padding: 20px !important;
-  text-align: left !important;
+  display: flex;
+  padding: 1rem;
+  flex-wrap: wrap;
 }
 
-.bp-modal-footer {
-  display: flex !important;
-  justify-content: flex-start !important;
-  gap: 10px !important;
-  border-top: 1px solid #ddd !important;
-  padding-top: 10px !important;
+.bp-modal-left {
+  flex: 1;
+  text-align: center;
 }
 
-.bp-loading,
-.bp-error {
-  text-align: center !important;
-  margin-top: 20px !important;
+.bp-modal-right {
+  flex: 2;
+  padding: 1rem;
+}
+
+.bp-modal-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.bp-modal-description {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.bp-modal-veg {
+  margin-bottom: 1rem;
+}
+
+.bp-modal-counter {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.bp-modal-counter button {
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+}
+
+.bp-modal-flavour,
+.bp-modal-weight {
+  margin-bottom: 1rem;
+}
+
+.bp-tab-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.bp-tab {
+  border: 1px solid #ccc;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.bp-tab-active {
+  background: #00bfff;
+  color: white;
+  border-color: #00bfff;
+}
+
+.bp-modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.bp-addcart-btn,
+.bp-buynow-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.bp-addcart-btn {
+  background-color: #007bff;
+}
+
+.bp-buynow-btn {
+  background-color: #ff5733;
 }
