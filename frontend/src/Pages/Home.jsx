@@ -32,7 +32,10 @@ const Home = () => {
 
   return (
     <>
-      <Carausal />
+    <div className="carausal mt-3">
+    <Carausal />
+    </div>
+      
 
 
       <div className="all-product-container">

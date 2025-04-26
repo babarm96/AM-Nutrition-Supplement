@@ -16,11 +16,13 @@ import BrandProducts from "./Componants/BrandProducts";
 import BeginnerLevel from './Componants/BeginnerLevel';
 import IntermediateLevel from './Componants/IntermediateLevel';
 import AdvancedLevel from './Componants/AdvancedLevel';
+import ScrollToTop from './Componants/ScrollToTop';
 // import "./Componants/ProductList.css";
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <Routes>
 
