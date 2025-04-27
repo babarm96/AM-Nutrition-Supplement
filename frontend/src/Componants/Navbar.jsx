@@ -106,12 +106,12 @@ const Navbar = () => {
 
 
       {/* Logo + Cart Navbar */}
-      <nav className="navbar custom-navbar" style={{
-  backgroundColor: "#434e55"  // Blended color mix of #495057, #2c3e50, and a faint touch of #f8f9fa
-}}>
+      <nav className="navbar custom-navbar fixed-top" style={{
+          background: "linear-gradient(to right, #232526, #414345)"
+        }}>
         <div className="container d-flex justify-content-between align-items-center">
           <Link className="navbar-brand custom-navbar-brand" to="/">
-            <img src="/assets/Logo.jpg" alt="Logo" className="img-fluid custom-logo" />
+            <img src="/assets/logo.png" alt="Logo" className="img-fluid custom-logo" />
           </Link>
 
           <NavLink className="nav-link position-relative text-white custom-cart-link" to="/cart">
@@ -124,9 +124,13 @@ const Navbar = () => {
       </nav>
 
       {/* Main Nav */}
-      <nav className="navbar navbar-expand-lg custom-main-nav" style={{
-          backgroundColor: "#434e55"  // Blended color mix of #495057, #2c3e50, and a faint touch of #f8f9fa
-        }}>
+      <nav className="navbar mt-2 navbar-expand-lg custom-main-nav" style={{ 
+        background: "linear-gradient(to right, #232526, #414345)",
+        marginTop: "10px",  // <<< added margin-top to push second navbar below
+        position: "fixed",
+        width: "100%",
+        zIndex: "1030"  // Bootstrap recommended z-index for fixed nav
+      }}>
         <div className="container-fluid">
           <NavLink className="navbar-brand ms-5 custom-find-store" to="/">
             <span className="bi bi-geo-alt-fill me-1 text-danger">

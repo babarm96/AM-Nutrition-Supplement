@@ -21,6 +21,8 @@ import ScrollToTop from './Componants/ScrollToTop';
 
 const App = () => {
   return (
+    <div className="text-white min-vh-100 pt-5" style={{ paddingTop: "160px" , backgroundColor:"#434e55" }}>
+
     <Router>
       <ScrollToTop />
       <Navbar />
@@ -44,6 +46,7 @@ const App = () => {
       </Routes>
       <Footer />
     </Router>
+    </div>
   );
 };
 
