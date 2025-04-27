@@ -124,7 +124,6 @@ const Contact = () => {
             <p className="mt-4" style={{ fontSize: "clamp(16px, 4vw, 20px)" }}>
               For more information and how we can meet your needs, please fill out the form below and someone from our team will be in touch.
             </p>
-              
               <Form />
           </div>
         </div>
