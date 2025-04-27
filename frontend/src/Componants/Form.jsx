@@ -30,6 +30,10 @@ const Form = () => {
   };
 
   return (
+  <div className="container">
+  <div className="row justify-content-center">
+    <div className="col-md-12">
+      <div className="protein-form-card shadow-lg p-4">
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -95,6 +99,10 @@ const Form = () => {
         </form>
       </div>
     </motion.div>
+    </div>
+    </div>
+  </div>
+</div>
   );
 };
 

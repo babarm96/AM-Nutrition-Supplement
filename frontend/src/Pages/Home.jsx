@@ -32,8 +32,8 @@ const Home = () => {
 
   return (
     <>
-    <div className="carausal mt-3">
-    <Carausal />
+    <div className="carausal" style={{ marginTop: "120px" }}>
+        <Carausal />
     </div>
       
 
