@@ -1,0 +1,280 @@
+/* General */
+.pro-section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+  }
+  
+  .pro-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .pro-loading,
+  .pro-error,
+  .pro-no-products {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 2rem;
+  }
+  
+  /* Product Card */
+  .pro-card-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .pro-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+    padding: 1rem;
+  }
+  
+  .pro-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .pro-badge-discount {
+    background-color: #ff4d4f;
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0 0 8px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .pro-badge-gift {
+    background-color: #52c41a;
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0 0 0 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  .pro-card-image {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+  
+  .pro-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0.5rem;
+  }
+  
+  /* Modal */
+  .pro-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .pro-modal {
+    background: #fff;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 900px;
+    padding: 1.5rem;
+    position: relative;
+    animation: slideUp 0.4s ease forwards;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .pro-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+  
+  .pro-modal-header h5 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .pro-modal-header button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+  }
+  
+  .pro-modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  
+  .pro-modal-left {
+    flex: 1 1 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pro-modal-image {
+    max-width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  
+  .pro-modal-right {
+    flex: 1 1 60%;
+    padding: 1rem;
+  }
+  
+  .pro-modal-description {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .pro-veg-icon {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Counter */
+  .pro-counter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .pro-counter button {
+    background-color: #1890ff;
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  
+  .pro-counter span {
+    display: inline-block;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+  }
+  
+  /* Tabs (Flavour and Weight) */
+  .pro-tab-section {
+    margin-bottom: 1rem;
+  }
+  
+  .pro-tab-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .pro-tab {
+    background: #f0f0f0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .pro-tab:hover {
+    background: #e6f7ff;
+  }
+  
+  .pro-tab.active {
+    background-color: #1890ff;
+    color: white;
+  }
+  
+  /* Actions */
+  .pro-modal-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .pro-btn-cart {
+    flex: 1;
+    background-color: #ff7a45;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pro-btn-cart:hover {
+    background-color: #ff5722;
+  }
+  
+  .pro-btn-buy {
+    flex: 1;
+    background-color: #52c41a;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pro-btn-buy:hover {
+    background-color: #389e0d;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .pro-modal-body {
+      flex-direction: column;
+    }
+  
+    .pro-modal-left,
+    .pro-modal-right {
+      flex: 1 1 100%;
+    }
+  }
+  
