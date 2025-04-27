@@ -38,10 +38,15 @@ const IntermediateLevel = () => {
           <img src={product.image} alt={product.title} className="product-image" />
           <div className="product-info">
             <h3 className="product-title">{product.title}</h3>
-            <div className="product-pricing">
+            {/* <div className="product-pricing">
               <span className="price">{product.price}</span>
               <span className="old-price">{product.oldPrice}</span>
-            </div>
+            </div> */}
+            <div className="pro-price-wrapper">
+  <span className="pro-discounted-price">₹{product.pprice}</span>
+  <span className="pro-original-price">₹{product.oldPrice}</span>
+  <span className="pro-discount">({product.discount}% OFF)</span>
+</div>
           </div>
         </div>
       ))}
@@ -55,10 +60,15 @@ const IntermediateLevel = () => {
             <div className="modal-right">
               <h2>{selectedProduct.title}</h2>
               <p>{selectedProduct.description}</p>
-              <div className="product-pricing">
+              {/* <div className="product-pricing">
                 <span className="price">{selectedProduct.price}</span>
                 <span className="old-price">{selectedProduct.oldPrice}</span>
-              </div>
+              </div> */}
+              <div className="pro-price-wrapper">
+  <span className="pro-discounted-price">₹{selectedProduct.pprice}</span>
+  <span className="pro-original-price">₹{selectedProduct.oldPrice}</span>
+  <span className="pro-discount">({selectedProduct.discount}% OFF)</span>
+</div>
               <div className="veg-nonveg">
                 <span>{selectedProduct.veg ? "🟢 Veg" : "🔴 Non-Veg"}</span>
               </div>

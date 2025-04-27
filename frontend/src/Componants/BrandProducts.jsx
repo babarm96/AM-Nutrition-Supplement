@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "../Style/BrandProducts.css";
+import "../Style/ProductStyles.css";
 
 const BrandProducts = () => {
   const { brandName } = useParams();
@@ -10,6 +10,9 @@ const BrandProducts = () => {
   const [error, setError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [selectedFlavour, setSelectedFlavour] = useState("");
+  const [selectedWeight, setSelectedWeight] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   const formattedBrandName = brandName
     ? brandName.replace("-", " ")
@@ -32,12 +35,14 @@ const BrandProducts = () => {
         setLoading(false);
       }
     };
-
     fetchProducts();
   }, [brandName]);
 
   const handleViewDetails = (product) => {
     setSelectedProduct(product);
+    setSelectedFlavour(product.flavours?.[0] || "");
+    setSelectedWeight(product.weights?.[0] || "");
+    setQuantity(1);
     setShowModal(true);
   };
 
@@ -47,105 +52,116 @@ const BrandProducts = () => {
   };
 
   const handleAddToCart = (product) => {
-    alert(`${product.pname} added to cart!`);
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ ...product, selectedFlavour, selectedWeight, quantity });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setShowModal(false);
   };
 
-  const handleBuyNow = (product) => {
-    alert(`Proceeding to buy: ${product.pname}`);
-  };
-
-  if (loading) {
-    return <p className="bp-loading">Loading products...</p>;
-  }
-
-  if (error) {
-    return <p className="bp-error">{error}</p>;
-  }
+  if (loading) return <p className="pro-loading">Loading products...</p>;
+  if (error) return <p className="pro-error">{error}</p>;
 
   return (
-    <section className="bp-product-section">
-      <h2 className="text-dark">Products from {formattedBrandName}</h2>
-      <div className="bp-product-container row">
+    <section className="pro-section pro-body">
+      <h2 className="pro-heading pb-2 text-light">Products from {formattedBrandName}</h2>
+      <div className="row">
         {products.length > 0 ? (
           products.map((product) => (
-            <div
-              key={product.id}
-              className="col-12 col-sm-6 col-md-4 mb-4 d-flex justify-content-center"
-            >
-              <div className="bp-product-card">
-                <img
-                  src={product.image}
-                  alt={product.pname}
-                  className="img-fluid p-2"
-                />
-                <h3>{product.pname}</h3>
-                <p className="bp-price">Price: ₹{product.pprice}</p>
-                <p className="bp-old-price">MRP: ₹{product.oldPrice}</p>
-                <p className="bp-discount">{product.discount}</p>
-                <button
-                  className="btn btn-primary mt-2"
-                  onClick={() => handleViewDetails(product)}
-                >
-                  View Details
-                </button>
+            <div key={product.id} className="col-12 col-sm-6 col-md-4 mb-4 pro-card-wrapper">
+              <div className="pro-card" onClick={() => handleViewDetails(product)}>
+                <div className="pro-badge-discount">{product.discount}</div>
+                {product.freeGift && <div className="pro-badge-gift">Free gift</div>}
+                <img src={product.image} alt={product.pname} className="pro-card-image" />
+                <h3 className="pro-card-title">{product.pname}</h3>
+                <div className="d-flex justify-content-center align-items-center gap-2">
+    <span className="text-danger fw-bold fs-6">₹{product.pprice}</span>
+    <del className="text-muted fs-6">₹{product.oldPrice}</del>
+    <span className="text-success fw-medium">{product.discount}</span>
+  </div>
               </div>
             </div>
           ))
         ) : (
-          <p className="bp-no-products">No products found for this brand.</p>
+          <p className="pro-no-products">No products found for this brand.</p>
         )}
       </div>
 
       {showModal && selectedProduct && (
-        <div className="bp-custom-modal">
-          <div className="bp-modal-content">
-            <div className="bp-modal-header">
-              <h5 className="bp-modal-title">{selectedProduct.pname}</h5>
-              <button
-                type="button"
-                className="btn-close"
-                onClick={handleCloseModal}
-              ></button>
+        <div className="pro-modal-overlay">
+          <div className="pro-modal">
+            <div className="pro-modal-header">
+              <h5>{selectedProduct.pname}</h5>
+              <button onClick={handleCloseModal}>×</button>
             </div>
-            <div className="bp-modal-body">
-              <div className="text-center">
-                <img
-                  src={selectedProduct.image}
-                  alt={selectedProduct.pname}
-                  className="img-fluid mb-3"
-                />
+            <div className="pro-modal-body">
+              <div className="pro-modal-left">
+                <img src={selectedProduct.image} alt={selectedProduct.pname} className="pro-modal-image" />
               </div>
-              <p><strong>Category:</strong> {selectedProduct.pcategory}</p>
-              <p><strong>Price:</strong> ₹{selectedProduct.pprice}</p>
-              <p><strong>MRP:</strong> ₹{selectedProduct.oldPrice}</p>
-              <p><strong>Discount:</strong> {selectedProduct.discount}</p>
-              <p><strong>Description:</strong> {selectedProduct.description}</p>
-              <p><strong>Level:</strong> {selectedProduct.level}</p>
-              <p><strong>Free Gift:</strong> {selectedProduct.freeGift ? "Yes" : "No"}</p>
-              <p><strong>Vegetarian:</strong> {selectedProduct.veg ? "Yes" : "No"}</p>
-            </div>
-            <div className="bp-modal-footer">
-              <button
-                type="button"
-                className="btn btn-success me-2"
-                onClick={() => handleAddToCart(selectedProduct)}
-              >
-                Add to Cart
-              </button>
-              <button
-                type="button"
-                className="btn btn-warning"
-                onClick={() => handleBuyNow(selectedProduct)}
-              >
-                Buy Now
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={handleCloseModal}
-              >
-                Close
-              </button>
+              <div className="pro-modal-right">
+                <p className="pro-modal-description">{selectedProduct.description}</p>
+
+                <div className="pro-veg-icon">
+                  {selectedProduct.veg ? "🟢 Veg" : "🔴 Non-Veg"}
+                </div>
+
+                <div className="pro-counter">
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
+                  <span>{quantity}</span>
+                  <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                </div>
+
+                <div className="pro-tab-section">
+                  <h6>Flavour:</h6>
+                  <div className="pro-tab-container">
+                    {[
+                      "Cafe Mocha",
+                      "Cold Coffee",
+                      "Double Rich Chocolate",
+                      "Kesar Badam Pista",
+                      "Malai Kulfi",
+                      "Mango",
+                      "Rich Chocolate Creme",
+                      "Vanilla Ice Cream",
+                    ].map((flavor) => (
+                      <button
+                        key={flavor}
+                        className={`pro-tab ${selectedFlavour === flavor ? "active" : ""}`}
+                        onClick={() => setSelectedFlavour(flavor)}
+                      >
+                        {flavor}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pro-tab-section">
+                  <h6>Weight:</h6>
+                  <div className="pro-tab-container">
+                    {[
+                      "35 g (0.07 lb)",
+                      "500 g (1.1 lb)",
+                      "1 kg (2.2 lb)",
+                      "1.5 kg (3.3 lb)",
+                      "2 kg (4.4 lb)",
+                    ].map((weight) => (
+                      <button
+                        key={weight}
+                        className={`pro-tab ${selectedWeight === weight ? "active" : ""}`}
+                        onClick={() => setSelectedWeight(weight)}
+                      >
+                        {weight}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pro-modal-actions">
+                  <button className="pro-btn-cart" onClick={() => handleAddToCart(selectedProduct)}>
+                    Add to Cart 🛒
+                  </button>
+                  <button className="pro-btn-buy">Buy Now ➜</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -155,3 +171,8 @@ const BrandProducts = () => {
 };
 
 export default BrandProducts;
+
+
+
+
+
