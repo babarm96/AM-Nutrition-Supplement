@@ -62,8 +62,8 @@ const BrandProducts = () => {
   if (error) return <p className="pro-error">{error}</p>;
 
   return (
-    <section className="pro-section">
-      <h2 className="pro-heading">Products from {formattedBrandName}</h2>
+    <section className="pro-section pro-body">
+      <h2 className="pro-heading pb-2 text-light">Products from {formattedBrandName}</h2>
       <div className="row">
         {products.length > 0 ? (
           products.map((product) => (

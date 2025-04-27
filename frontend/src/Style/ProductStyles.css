@@ -1,7 +1,10 @@
 /* General */
+.pro-body{
+  margin-top: 8rem !important;
+}
 .pro-section {
-    padding: 2rem;
-    background-color: #f9f9f9;
+    /* padding: 2rem; */
+    /* background-color: #f9f9f9; */
   }
   
   .pro-heading {

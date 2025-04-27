@@ -58,7 +58,7 @@ const ProductList = ({ category }) => {
   }
 
   return (
-    <div className="row mt-5">
+    <div className="row  pro-body">
       {products.map((product) => (
         <div key={product.id} className="col-12 col-sm-6 col-md-4 mb-4 pro-card-wrapper mt-2">
           <div className="pro-card" onClick={() => handleViewDetails(product)}>
