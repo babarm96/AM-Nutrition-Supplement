@@ -45,7 +45,7 @@ const BrandsSection = () => {
 
   return (
     <section className="brands-section mt-4">
-      <h2 className="text-dark text-center mb-4">Shop by Brand</h2>
+      <h2 className="text-light fw-bold text-center mb-4">Shop by Brand</h2>
       <div className="container">
         <div className="row justify-content-center">
           {brands.map((brand) => (
